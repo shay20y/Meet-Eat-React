@@ -7,6 +7,7 @@ function App() {
   return (
     <>
       <h1>ido is the kind</h1>
+      <h3>testing merge ido branch</h3>
       <h3>testing merge shay branch</h3>
       <p>lorem34</p>
     </>
