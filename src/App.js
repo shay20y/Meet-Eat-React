@@ -6,6 +6,7 @@ import { MyContext } from './context/myContext';
 function App() {
   return (
     <>
+      <h1>ido is the kind</h1>
       <p>lorem34</p>
     </>
   );
