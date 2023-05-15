@@ -6,7 +6,7 @@ import { MyContext } from './context/myContext';
 function App() {
   return (
     <>
-
+      <p>lorem34</p>
     </>
   );
 }
