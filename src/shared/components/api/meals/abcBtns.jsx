@@ -5,6 +5,8 @@ import axios from 'axios';
 export default function AbcBtns({ setArResult }) {
     const [alpha, setAlpha] = useState([]);
 
+    const a = Array.from(Array(26)).map((e, i) => i + 65);
+    
     useEffect(() => {
         setAlpha(a);
     }, []);
@@ -22,17 +24,17 @@ export default function AbcBtns({ setArResult }) {
         }
     };
 
-    const a = Array.from(Array(26)).map((e, i) => i + 65);
+    
 
     return (
-        <div className="flex justify-center space-x-2 mt-4">
+        <div className="flex flex-wrap justify-center space-x-2 mt-4">
             {alpha.map((x) => (
                 <button
                     key={x}
                     onClick={() => {
                         doApiSearchByLetter(String.fromCharCode(x));
                     }}
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200"
+                    className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-green-500 focus:outline-none focus:ring focus:ring-blue-200 my-2"
                 >
                     {String.fromCharCode(x)}
                 </button>

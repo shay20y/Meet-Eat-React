@@ -57,7 +57,7 @@ export default function Header() {
               <p className="p-2">{userInfo.name} </p>
               <button
                 onClick={onLogOut}
-                className="ml-4 px-4 py-2 text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                className="ml-4 px-4 py-2 text-white rounded-lg bg-blue-600 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-blue-300"
               >
                 Log out
               </button>
@@ -67,13 +67,13 @@ export default function Header() {
               <div className="log_in ">
                 <Link
                   to="/login"
-                  className="mr-4 px-4 py-2 text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                  className="mr-4 px-4 py-2 text-white bg-blue-600 hover:bg-green-500 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"
                 >
                   Log in
                 </Link>
                 <Link
                   to="/signup"
-                  className="px-4 py-2 text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                  className="px-4 py-2 text-white bg-blue-600 hover:bg-green-500 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"
                 >
                   Sign up
                 </Link>
