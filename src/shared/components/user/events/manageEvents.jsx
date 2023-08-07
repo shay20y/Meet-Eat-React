@@ -6,6 +6,7 @@ import { EVENT_DELETE_URL__DELETE, USER_EVENT_URL__GET } from '../../../constant
 import ChackUserLogin from '../../../utils/chackUserLogin';
 import { Accordion, AccordionItem } from '@szhsin/react-accordion';
 import EventsGlobelList from './eventsGlobelList';
+import { errorToast, errorToastGlobel } from '../../../utils/toastMes';
 
 export default function ManageEvents() {
     const [arAll, setArAll] = useState([]);
@@ -16,22 +17,34 @@ export default function ManageEvents() {
     const nav = useNavigate();
 
     useEffect(() => {
-        <ChackUserLogin />
         doApiAll();
         doApiMange();
+        <ChackUserLogin />
     }, [userInfo]);
 
+
+
     const doApiAll = async () => {
-        const url = `${USER_EVENT_URL__GET}`;
-        const data = await useApiGetAxios(url);
-        setArAll(data);
+        try {
+            const url = `${USER_EVENT_URL__GET}`;
+            const data = await useApiGetAxios(url);
+            setArAll(data);
+        } catch (error) {
+            console.log(error);
+            errorToastGlobel();
+        }
     };
 
     const doApiMange = async () => {
-        const url = `${USER_EVENT_URL__GET}?host=1`;
-        const data = await useApiGetAxios(url);
-        console.log(data,'data');
-        setArMange(data);
+        try {
+            const url = `${USER_EVENT_URL__GET}?host=1`;
+            const data = await useApiGetAxios(url);
+            console.log(data, 'data');
+            setArMange(data);
+        } catch (error) {
+            console.log(error);
+            errorToastGlobel();
+        }
     };
 
     const deleteItem = async (_delId) => {
@@ -46,7 +59,7 @@ export default function ManageEvents() {
             }
         } catch (error) {
             console.log(error);
-            alert('There was a problem');
+            errorToast('There was a problem');
         }
     };
 
@@ -54,7 +67,7 @@ export default function ManageEvents() {
         <>
             <Accordion className=''>
                 <AccordionItem className={'accordionItem text-center m-5 p-2 text-2xl rounded-xl '} header="all of my events">
-                    <EventsGlobelList arr={arAll}/>
+                    <EventsGlobelList arr={arAll} />
                 </AccordionItem>
 
                 <AccordionItem className={'accordionItem text-center m-5 p-2 text-2xl rounded-xl '} header="Mange your events">
@@ -107,7 +120,7 @@ export default function ManageEvents() {
                                             {arMange.map((item, i) => {
                                                 return (
                                                     <tr
-                                                        key={item.event_id+i+1}
+                                                        key={item.event_id + i + 1}
                                                         className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                                                     >
                                                         <th

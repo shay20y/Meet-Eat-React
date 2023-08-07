@@ -16,16 +16,24 @@ export default function Event() {
   }, [params]);
 
   const doApi = async () => {
-    const url = EVENT_SINGLE_URL__GET + '/' + params["id"];
-    const data = await useApiGetAxios(url);
-    setItem(data[0]);
+    try {
+      const url = EVENT_SINGLE_URL__GET + '/' + params["id"];
+      const data = await useApiGetAxios(url);
+      setItem(data[0]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const doApiContP = async () => {
-    const url = EVENT_PATICIPANTS__GET + '/' + item.event_id;
-    const data = await useApiGetAxios(url);
-    console.log(data[0]);
-    setP(data[0]);
+    try {
+      const url = EVENT_PATICIPANTS__GET + '/' + item.event_id;
+      const data = await useApiGetAxios(url);
+      console.log(data[0]);
+      setP(data[0]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

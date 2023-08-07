@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { EVENT_URL__GET_POST } from '../../constant/constant';
 import { useApiHooks } from '../../hooks/useApiHooks';
+import { errorToastGlobel } from '../../utils/toastMes';
 
 export default function EventList() {
   const { useApiGetAxios } = useApiHooks();
@@ -15,13 +16,18 @@ export default function EventList() {
 
   const doApi = async () => {
     try {
-      const data = await useApiGetAxios(EVENT_URL__GET_POST);
-      if (data.fatal === true) {
-        return;
+      try {
+        const data = await useApiGetAxios(EVENT_URL__GET_POST);
+        if (data.fatal === true) {
+          return;
+        }
+        setAr(data);
+      } catch (error) {
+        console.log(error);
       }
-      setAr(data);
     } catch (error) {
       console.log(error);
+      errorToastGlobel();
     }
   };
 
@@ -60,4 +66,4 @@ export default function EventList() {
       })}
     </div>
   )
-    }
+}

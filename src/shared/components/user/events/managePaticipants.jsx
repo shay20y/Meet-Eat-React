@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import ChackUserLogin from '../../../utils/chackUserLogin';
 import { EVENT_USERS_APPROVE_URL__PATCH, USER_EVENT_PARTICIPANTS_URL__GET } from '../../../constant/constant';
 import { UserContext } from '../../../context/userContext';
+import { errorToastGlobel, successToastGlobel } from '../../../utils/toastMes';
 
 export default function ManagePaticipants() {
 
@@ -20,21 +21,32 @@ export default function ManagePaticipants() {
 
 
     const doApi = async () => {
-        const url = USER_EVENT_PARTICIPANTS_URL__GET + '/' + params['id'];
-        const data = await useApiGetAxios(url);
-        console.log(data, 'data');
-        setAr(data);
+        try {
+            const url = USER_EVENT_PARTICIPANTS_URL__GET + '/' + params['id'];
+            const data = await useApiGetAxios(url);
+            console.log(data, 'data');
+            setAr(data);
+        } catch (error) {
+            console.log(error);
+            errorToastGlobel();
+        }
     };
 
     const doApiApproval = async (event_id, user_id) => {
-        const url = EVENT_USERS_APPROVE_URL__PATCH
-        const data = await useApiMethodAxios(url, 'PATCH', {
-            "user_id": user_id,
-            "event_id": event_id
-        })
-        console.log(data, 'data');
-        if (data.fieldCount != null) {
-            doApi();
+        try {
+            const url = EVENT_USERS_APPROVE_URL__PATCH
+            const data = await useApiMethodAxios(url, 'PATCH', {
+                "user_id": user_id,
+                "event_id": event_id
+            })
+            console.log(data, 'data');
+            if (data.fieldCount != null) {
+                successToastGlobel();
+                doApi();
+            }
+        } catch (error) {
+            console.log(error);
+            errorToastGlobel();
         }
     };
 

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useApiHooks } from '../../../hooks/useApiHooks';
 import { EVENT_SINGLE_URL__GET, EVENT_URL__GET_POST } from '../../../constant/constant';
 import { useDate } from '../../../hooks/useDate';
+import { errorToastGlobel, successToastGlobel } from '../../../utils/toastMes';
 
 export default function EditEvent() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -32,6 +33,7 @@ export default function EditEvent() {
 
     } catch (error) {
       console.log(error);
+      errorToastGlobel();
     }
   };
 
@@ -54,11 +56,12 @@ export default function EditEvent() {
       const data = await useApiMethodAxios(url, "PUT", strD);
       console.log(data, 'data');
       if (data.fieldCount != null) {
+        successToastGlobel();
         nav("/myEvent");
       }
     } catch (error) {
       console.log(error);
-      alert("there problem");
+      errorToast("there problem");
     }
   };
 

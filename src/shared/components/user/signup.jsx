@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApiHooks } from '../../hooks/useApiHooks';
 import { USER_URL__GET_POST } from '../../constant/constant';
+import { successToast } from '../../utils/toastMes';
 
 export default function Signup() {
     const { useApiMethodAxios } = useApiHooks();
@@ -19,6 +20,7 @@ export default function Signup() {
             const data = await useApiMethodAxios(USER_URL__GET_POST, 'POST', _bodyData);
             console.log(data);
             if (data.fieldCount!=null) {
+                successToast("successfully registered , Login please")
                 nav('/login');
             }
         } catch (err) {
