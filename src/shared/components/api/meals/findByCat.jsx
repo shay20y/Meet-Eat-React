@@ -9,7 +9,6 @@ import { errorToast, errorToastGlobel } from '../../../utils/toastMes';
 export default function FindByCat() {
   const [arCat, setArCat] = useState([]);
   const [arArea, setArArea] = useState([]);
-
   const [arResult, setArResult] = useState([]);
 
   const { register, handleSubmit, formState: { errors } } = useForm();
