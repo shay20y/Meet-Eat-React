@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function EventsGlobelList(props) {
+  const nav = useNavigate()
   const arr = props.arr;
   return (
     <div className="relative overflow-x-auto  sm:rounded-lg py-7">

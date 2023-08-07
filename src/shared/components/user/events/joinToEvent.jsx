@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useApiHooks } from '../../../hooks/useApiHooks';
 import useUserInfo from '../../../hooks/useUserData';
 import { EVENT_JOIN__POST } from '../../../constant/constant';
+import { successToastGlobel } from '../../../utils/toastMes';
 
 export default function JoinToEvent() {
     const { useApiMethodAxios } = useApiHooks();
@@ -21,6 +22,7 @@ export default function JoinToEvent() {
             const data = await useApiMethodAxios(url, 'PATCH');
             if (data.fieldCount != null) {
                 setSended(true);
+                successToastGlobel();
             }
         } catch (error) {
             console.log(error);

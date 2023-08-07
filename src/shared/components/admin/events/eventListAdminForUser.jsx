@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useApiHooks } from '../../../hooks/useApiHooks';
 import { EVENT_DELETE_URL__DELETE, USER_EVENT_URL__GET } from '../../../constant/constant';
+import { errorToastGlobel, successToastGlobel } from '../../../utils/toastMes';
 
 export default function EeventListAdminForUser() {
     const [ar, setAr] = useState([])
@@ -16,29 +17,28 @@ export default function EeventListAdminForUser() {
         try {
             const url = USER_EVENT_URL__GET+"/"+params["id"];
             const data = await useApiGetAxios(url);
-            // console.log(data);
             setAr(data)
-
+            successToastGlobel()
         } catch (error) {
             console.log(error);
+            errorToastGlobel()
         }
     }
-
+    
     const deleteItem = async (_delId) => {
         try {
             const url = EVENT_DELETE_URL__DELETE+"/"+_delId
-            // console.log(url);
             if ( window.confirm("Delete item?")) {
                 const data = await useApiMethodAxios(url, "DELETE");
-                // console.log(data);
                 if (data.insertId!=null) {
                     doApi();
+                    successToastGlobel()
                 }
             }
         }
         catch (error) {
             console.log(error);
-            alert("There problem")
+            errorToastGlobel()
         }
     }
 

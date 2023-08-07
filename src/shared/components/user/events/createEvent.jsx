@@ -6,6 +6,7 @@ import { useApiHooks } from '../../../hooks/useApiHooks';
 import { UserContext } from '../../../context/userContext';
 import ChackUserLogin from '../../../utils/chackUserLogin';
 import { useDate } from '../../../hooks/useDate';
+import { errorToastGlobel, successToast } from '../../../utils/toastMes';
 
 export default function CreateEvent() {
   const { useApiMethodAxios } = useApiHooks();
@@ -40,10 +41,12 @@ export default function CreateEvent() {
       const url = EVENT_URL__GET_POST;
       const data = await useApiMethodAxios(url, 'POST', _bodyData);
       if (data.insertId != null) {
+        successToast("You have successfully posted")
         nav('/');
       }
     } catch (error) {
       console.log(error);
+      errorToastGlobel();
     }
   };
 

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import MealListByProps from './mealListByProps';
 import { API_LIST_AREA, API_LIST_CATWGORIES_ALL, API_MEAL_AREA, API_MEAL_CATEGORY, API_MEAL_SEARCH } from '../../../constant/constant';
 import AbcBtns from './abcBtns';
+import { errorToast, errorToastGlobel } from '../../../utils/toastMes';
 
 export default function FindByCat() {
   const [arCat, setArCat] = useState([]);
@@ -20,8 +21,13 @@ export default function FindByCat() {
   }, []);
 
   const doApiCat = async () => {
-    const { data } = await axios(API_LIST_CATWGORIES_ALL);
-    setArCat(data.categories);
+    try {
+      const { data } = await axios(API_LIST_CATWGORIES_ALL);
+      setArCat(data.categories);
+    } catch (error) {
+      console.log(error);
+      errorToastGlobel();
+    }
   };
 
   const doApiCatList = async (cateName) => {
@@ -33,6 +39,7 @@ export default function FindByCat() {
       setArResult(data.meals)
     } catch (error) {
       console.log(error, 'error');
+      errorToastGlobel();
     }
   };
 
@@ -50,8 +57,8 @@ export default function FindByCat() {
       console.log(errors);
     } catch (error) {
       console.log(error);
+      errorToastGlobel();
     }
-
   };
 
   const onSubForm = (_bodyData) => {
@@ -67,10 +74,11 @@ export default function FindByCat() {
       if (data.meals != null) {
         setArResult(data.meals);
       } else {
-        alert("We couldn't find the recipe you were looking for");
+        errorToast("We couldn't find the recipe you were looking for");
       }
     } catch (error) {
       console.log(error);
+      errorToastGlobel();
     }
   };
 

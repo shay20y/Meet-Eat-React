@@ -5,6 +5,7 @@ import { LOGIN_URL__POST } from '../../constant/constant';
 import { useApiHooks } from '../../hooks/useApiHooks';
 import { TOKEN_KEY } from '../../services/userService';
 import { UserContext } from '../../context/userContext';
+import { successToast } from '../../utils/toastMes';
 
 export default function Login() {
   const nav = useNavigate();
@@ -25,6 +26,7 @@ export default function Login() {
       if (data.token) {
         localStorage.setItem(TOKEN_KEY, data.token);
         checkToken();
+        successToast("successfully connected")
         nav('/');
       }
     } catch (err) {
