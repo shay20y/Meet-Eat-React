@@ -84,7 +84,7 @@ export default function FindByCat() {
 
   return (
     <div className='my-8'>
-      <div className="bg-orange-400">
+      <div className="bg-orange-400 mb-4">
         <>
           <p className='text-2xl text-center p-3'>
             Welcome to Recipe Finder! you can search by area , categories or even by name
@@ -101,7 +101,7 @@ export default function FindByCat() {
                   type='text'
                   id='title'
                 />
-                <button className='text-white border border-gray-300  text-sm rounded-lg block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white bg-blue-700'>
+                <button className='text-white border border-gray-300  text-sm rounded-lg block  p-2.5 bg-blue-600 hover:bg-green-500'>
                   search
                 </button>
               </form>
@@ -141,6 +141,9 @@ export default function FindByCat() {
             </div>
           </div>
         </div>
+        <p className='text-2xl text-center p-3'>
+          or you can try our recipe dictonery
+        </p>
         <AbcBtns setArResult={setArResult} />
       </div>
 
