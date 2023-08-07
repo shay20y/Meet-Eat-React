@@ -1,0 +1,53 @@
+body {
+    background: rgba(246, 185, 147, 0.274);
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.384);
+}
+
+
+.logo {
+    max-width: 30vh !important;
+}
+
+.row {
+    justify-content: space-between;
+}
+
+li {
+    padding: 5px;
+}
+
+.grop {
+    min-height: 100%;
+}
+
+header {
+    border-radius: 12px;
+    /* border: 5px blue solid; */
+    box-shadow: 0px 12px 31px 7px rgba(0, 0, 0, 0.46);
+    padding: 8px;
+    background: rgba(237, 205, 185);
+    /* position: sticky; */
+    top: 0;
+    left: 0;
+    z-index: 0.9
+}
+
+.btnIng{
+width: 100%;
+}
+
+.popup {
+    z-index: 1;
+}
+
+.mealCard{
+    z-index: -0.9;
+}
+
+.accordionItem{
+    background: #ecc917;
+}
+
