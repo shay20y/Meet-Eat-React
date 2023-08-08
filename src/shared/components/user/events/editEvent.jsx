@@ -71,38 +71,38 @@ export default function EditEvent() {
       {item.title ?
         <form onSubmit={handleSubmit(onSubForm)} className="max-w-md mx-auto">
           <div className="mb-4">
-            <label htmlFor="title" className="block mb-2">Title</label>
+            <label for="title" className="block mb-2">Title</label>
             <input defaultValue={item.title} {...register("title", { required: true, minLength: 2 })} className="w-full p-2 border border-gray-300 rounded" type="text" id="title" />
             {errors.title && <div className="text-red-500 mt-1">* Enter a valid title</div>}
           </div>
 
           <div className="mb-4">
-            <label htmlFor="city" className="block mb-2">City</label>
+            <label for="city" className="block mb-2">City</label>
             <input defaultValue={item.city} {...register("city", { required: true, minLength: 2 })} className="w-full p-2 border border-gray-300 rounded" type="text" id="city" />
             {errors.city && <div className="text-red-500 mt-1">* Enter a valid city</div>}
           </div>
 
           <div className="mb-4">
-            <label htmlFor="adress" className="block mb-2">adress</label>
+            <label for="adress" className="block mb-2">adress</label>
             <input defaultValue={item.adress} {...register("adress", { required: true, minLength: 2 })} className="w-full p-2 border border-gray-300 rounded" type="text" id="adress" />
             {errors.adress && <div className="text-red-500 mt-1">* Enter a valid adress</div>}
           </div>
 
           <div className="mb-4">
-            <label htmlFor="description" className="block mb-2">Description</label>
+            <label for="description" className="block mb-2">Description</label>
             <textarea defaultValue={item.description} {...register("description", { required: true, minLength: 2 })} className="w-full p-2 border border-gray-300 rounded" id="description"></textarea>
             {errors.description && <div className="text-red-500 mt-1">* Enter a valid description</div>}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="mb-4">
-              <label htmlFor="max_paticipants" className="block mb-2">Max Participants</label>
+              <label for="max_paticipants" className="block mb-2">Max Participants</label>
               <input defaultValue={item.max_paticipants} {...register("max_paticipants", { required: true, minLength: 2 })} className="w-full p-2 border border-gray-300 rounded" type="number" id="max_paticipants" />
               {errors.max_paticipants && <div className="text-red-500 mt-1">* Enter a valid max participants</div>}
             </div>
 
             <div className="mb-4">
-            <label htmlFor="event_date" className="block mb-2">Event Date</label>
+            <label for="event_date" className="block mb-2">Event Date</label>
             <input
               defaultValue={defaultDate}
               {...register("event_date", { required: true })}

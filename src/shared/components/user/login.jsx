@@ -40,7 +40,7 @@ export default function Login() {
         <h1 className="text-4xl font-bold text-center mb-8">Site Login</h1>
         <form onSubmit={handleSubmit(onSubForm)}>
           <div className="mb-6">
-            <label className="block text-sm font-bold mb-2" htmlFor="email">
+            <label className="block text-sm font-bold mb-2" for="email">
               Email
             </label>
             <input
@@ -52,7 +52,7 @@ export default function Login() {
             {errors.email && <div className="text-red-500">* Enter a valid email</div>}
           </div>
           <div className="mb-6">
-            <label className="block text-sm font-bold mb-2" htmlFor="password">
+            <label className="block text-sm font-bold mb-2" for="password">
               Password
             </label>
             <input
