@@ -15,7 +15,6 @@ export default function ManagePaticipants() {
 
 
     useEffect(() => {
-        <ChackUserLogin />
         doApi();
     }, [params]);
 
@@ -33,12 +32,13 @@ export default function ManagePaticipants() {
     };
 
     const doApiApproval = async (event_id, user_id) => {
+        const bodyData = {
+            "user_id": user_id,
+            "event_id": event_id
+        }
         try {
             const url = EVENT_USERS_APPROVE_URL__PATCH
-            const data = await useApiMethodAxios(url, 'PATCH', {
-                "user_id": user_id,
-                "event_id": event_id
-            })
+            const data = await useApiMethodAxios(url, 'PATCH', bodyData)
             console.log(data, 'data');
             if (data.fieldCount != null) {
                 successToastGlobel();
@@ -51,58 +51,61 @@ export default function ManagePaticipants() {
     };
 
     return (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg py-7">
-            <div className="w-full overflow-hidden">
-                <div className="w-full overflow-x-auto ">
-                    {ar.length > 0 ? (
-                        <table className="w-full text-sm text-left table-auto min-w-full divide-y divide-gray-200 text-black ">
-                            <thead className="text-xs  uppercase bg-gray-50 dark:bg-gray-700">
-                                <tr>
-                                    <th scope="col" className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
-                                        name
-                                    </th>
-                                    <th scope="col" className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
-                                        email
-                                    </th>
-                                    <th scope="col" className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
-                                        approved
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {ar.map((item, i) => {
-                                    return (
-                                        <tr
-                                            key={`${item.event_id}-${i}`}
-                                            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                                        >
-                                            <td className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">{item.name}</td>
-                                            <td className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">{item.email}</td>
-                                            <td className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
-                                                {item.approved === 1 ? (
-                                                    <h3 className="text-green-500 font-semibold">Join successfully</h3>
-                                                ) : (
-                                                    <button
-                                                        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-                                                        onClick={() => {
-                                                            doApiApproval(item.event_id, item.user_id);
-                                                        }}
-                                                    >
-                                                        Request approval
-                                                    </button>
-                                                )}
-                                            </td>
+        <>
+            <ChackUserLogin />
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg py-7">
+                <div className="w-full overflow-hidden">
+                    <div className="w-full overflow-x-auto ">
+                        {ar.length > 0 ? (
+                            <table className="w-full text-sm text-left table-auto min-w-full divide-y divide-gray-200 text-black ">
+                                <thead className="text-xs  uppercase bg-gray-50 dark:bg-gray-700">
+                                    <tr>
+                                        <th scope="col" className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
+                                            name
+                                        </th>
+                                        <th scope="col" className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
+                                            email
+                                        </th>
+                                        <th scope="col" className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
+                                            approved
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {ar.map((item, i) => {
+                                        return (
+                                            <tr
+                                                key={`${item.event_id}-${i}`}
+                                                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                                            >
+                                                <td className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">{item.name}</td>
+                                                <td className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">{item.email}</td>
+                                                <td className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
+                                                    {item.approved === 1 ? (
+                                                        <h3 className="text-green-500 font-semibold">Join successfully</h3>
+                                                    ) : (
+                                                        <button
+                                                            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+                                                            onClick={() => {
+                                                                doApiApproval(params['id'], item.user_id);
+                                                            }}
+                                                        >
+                                                            Request approval
+                                                        </button>
+                                                    )}
+                                                </td>
 
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    ) : (
-                        <p>No events found</p>
-                    )}
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <p>No events found</p>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }

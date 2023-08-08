@@ -23,7 +23,7 @@ export const EVENT_COUNT_USERS_URL__GET = `${API_URL}/events/users/count`;
 export const EVENT_DESCRIBE_URL__GET = `${API_URL}/events/describe`;
 export const EVENT_USERS_DESCRIBE_URL__GET = `${API_URL}/events/users/describe`;
 export const EVENT_USERS_APPROVE_URL__PATCH = `${API_URL}/events/users/approve`;
-export const EVENT_DELETE_URL__DELETE = `${API_URL}/events`;
+export const EVENT_DELETE_URL__DELETE = `${API_URL}/events/deleteEvent`;
 export const EVENT_PATICIPANTS__GET = `${API_URL}/events/users/count`;
 export const EVENT_JOIN__POST = `${API_URL}/events/joinEvent`;
 
@@ -39,8 +39,8 @@ export const API_LIST_CATWGORIES_ALL = `${MAIN_URL}categories.php`
 export const API_LIST_INGREDIENTS = `${MAIN_URL}list.php?u=list`
 
 export const API_MEAL_AREA= `${MAIN_URL}filter.php?a=`
-export const API_MEAL_SEARCH= `${MAIN_URL}search.php?s=`
 export const API_MEAL_CATEGORY= `${MAIN_URL}filter.php?c=`
+export const API_MEAL_SEARCH= `${MAIN_URL}search.php?s=`
 export const API_MEAL_SEARCH_BY_LETTER= `${MAIN_URL}search.php?f=`
 
 
