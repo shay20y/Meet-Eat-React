@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useApiHooks } from '../../../hooks/useApiHooks';
 import useUserInfo from '../../../hooks/useUserData';
 import { EVENT_JOIN__POST } from '../../../constant/constant';
-import { successToastGlobel } from '../../../utils/toastMes';
+import { errorToast, successToastGlobel } from '../../../utils/toastMes';
 
 export default function JoinToEvent() {
     const { useApiMethodAxios } = useApiHooks();
     const [sended, setSended] = useState(false);
     const { checkToken } = useUserInfo();
     const params = useParams();
+    const nav = useNavigate();
 
     useEffect(() => {
         checkToken();
@@ -17,12 +18,14 @@ export default function JoinToEvent() {
     }, [params, sended]);
 
     const doApi = async () => {
+        const url = EVENT_JOIN__POST + '/' + params['id'];
+        console.log(url);
         try {
-            const url = EVENT_JOIN__POST + '/' + params['id'];
-            const data = await useApiMethodAxios(url, 'PATCH');
+            const data = await useApiMethodAxios(url, 'POST');
             if (data.fieldCount != null) {
                 setSended(true);
                 successToastGlobel();
+                nav(-1)
             }
         } catch (error) {
             console.log(error);
