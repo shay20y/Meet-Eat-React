@@ -26,7 +26,7 @@ export default function Header() {
   };
 
   return (
-    <header>
+    <header className='mb-5'>
       <div className="mx-auto px-4 py-6 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
         <div className="flex items-center justify-between">
           <div className="flex items-center">

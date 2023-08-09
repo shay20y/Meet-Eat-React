@@ -53,7 +53,10 @@ export default function CreateEvent() {
     <>
       <ChackUserLogin />
       <div className="container mx-auto">
-        <form onSubmit={handleSubmit(onSubForm)} className="max-w-md mx-auto px-4">
+        <form onSubmit={handleSubmit(onSubForm)} className="max-w-md mx-auto px-4 bg-white">
+          <div>
+            <h2 className="text-4xl font-bold text-center mb-8 pt-6">Add a New Event</h2>
+          </div>
           <div className="mb-4">
             <label for="title" className="block mb-2">Title</label>
             <input {...register("title", { required: true, minLength: 2 })} className="w-full p-2 border border-gray-300 rounded" type="text" id="title" />

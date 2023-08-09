@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useApiHooks } from '../../../hooks/useApiHooks';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ChackUserLogin from '../../../utils/chackUserLogin';
 import { EVENT_USERS_APPROVE_URL__PATCH, USER_EVENT_PARTICIPANTS_URL__GET } from '../../../constant/constant';
 import { UserContext } from '../../../context/userContext';
@@ -11,6 +11,7 @@ export default function ManagePaticipants() {
     const [ar, setAr] = useState([]);
     const { useApiGetAxios, useApiMethodAxios } = useApiHooks();
     const params = useParams();
+    const nav = useNavigate();
 
 
 
@@ -104,6 +105,9 @@ export default function ManagePaticipants() {
                             <p>No events found</p>
                         )}
                     </div>
+                    <button onClick={() => { nav(-1) }} className="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded mt-5">
+                        go back
+                    </button>
                 </div>
             </div>
         </>

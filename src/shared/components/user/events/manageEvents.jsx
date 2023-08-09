@@ -50,12 +50,10 @@ export default function ManageEvents() {
     const deleteItem = async (_delId) => {
         try {
             const url = EVENT_DELETE_URL__DELETE + '/' + _delId;
-            if (window.confirm('Delete item?')) {
-                const data = await useApiMethodAxios(url, 'DELETE');
-                if (data.insertId !== null) {
-                    doApiMange();
-                    doApiAll();
-                }
+            const data = await useApiMethodAxios(url, 'DELETE');
+            if (data.insertId !== null) {
+                doApiMange();
+                doApiAll();
             }
         } catch (error) {
             console.log(error);
@@ -153,7 +151,7 @@ export default function ManageEvents() {
                                                         <td className="">
                                                             <button
                                                                 onClick={() => {
-                                                                    deleteItem(item.event_id);
+                                                                    if (window.confirm(`Delete ${item.title}?`)) { deleteItem(item.event_id);}                                                                  
                                                                 }}
                                                                 className="bg-orange-500 hover:bg-red-500 text-white font-bold p-2 rounded"
                                                             >
