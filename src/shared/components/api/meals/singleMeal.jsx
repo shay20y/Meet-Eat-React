@@ -19,6 +19,7 @@ export default function SingleMeal() {
     const doApi = async () => {
         const url = API_MEAL_BY_ID + params["id"];
         const { data } = await axios(url)
+        console.log(data);
         setAr(data.meals[0])
         setStr((data.meals[0].strYoutube))
 
@@ -35,11 +36,15 @@ export default function SingleMeal() {
                     {ar.strArea == "Unknown" || <p className="text-center text-xl mb-3">{ar.strArea}</p>}
                     <img width={"80%"} src={ar.strMealThumb} alt={ar.strMeal} className="rounded-lg" />
                     <div>
-                        <button onClick={() => { window.open(ar.strSource, "_blank") }} class="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded">
-                            View Recipe
-                        </button>
+                        {ar.strSource != null ?
+                            <button onClick={() => { window.open(ar.strSource, "_blank") }} className="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded">
+                                View Recipe
+                            </button>
+                            :
+                            <></>
+                        }
                         &nbsp;
-                        <button onClick={() => { nav(-1) }} class="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded mt-5">
+                        <button onClick={() => { nav(-1) }} className="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded mt-5">
                             go back
                         </button>
                     </div>

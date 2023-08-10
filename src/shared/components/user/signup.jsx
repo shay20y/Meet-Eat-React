@@ -39,7 +39,7 @@ export default function Signup() {
                 <h1 className="text-4xl font-bold text-center ">Sign up</h1>
                 <form onSubmit={handleSubmit(onSubForm)}>
                     <div className="mb-6">
-                        <label className="block text-sm font-bold mb-2" htmlFor="name">
+                        <label className="block text-sm font-bold mb-2" for="name">
                             Full Name
                         </label>
                         <input
@@ -51,7 +51,7 @@ export default function Signup() {
                         {errors.name && <div className="text-red-500">* Enter a valid Name (min 2 chars)</div>}
                     </div>
                     <div className="mb-6">
-                        <label className="block text-sm font-bold mb-2" htmlFor="email">
+                        <label className="block text-sm font-bold mb-2" for="email">
                             Email
                         </label>
                         <input
@@ -63,7 +63,7 @@ export default function Signup() {
                         {errors.email && <div className="text-red-500">* Enter a valid email</div>}
                     </div>
                     <div className="mb-6">
-                        <label className="block text-sm font-bold mb-2" htmlFor="password">
+                        <label className="block text-sm font-bold mb-2" for="password">
                             Password
                         </label>
                         <input

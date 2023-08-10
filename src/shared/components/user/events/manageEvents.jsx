@@ -19,7 +19,6 @@ export default function ManageEvents() {
     useEffect(() => {
         doApiAll();
         doApiMange();
-        <ChackUserLogin />
     }, [userInfo]);
 
 
@@ -28,6 +27,7 @@ export default function ManageEvents() {
         try {
             const url = `${USER_EVENT_URL__GET}`;
             const data = await useApiGetAxios(url);
+            console.log(data);
             setArAll(data);
         } catch (error) {
             console.log(error);
@@ -65,6 +65,7 @@ export default function ManageEvents() {
 
     return (
         <>
+            <ChackUserLogin />
             <Accordion className=''>
                 <AccordionItem className={'accordionItem text-center m-5 p-2 text-2xl rounded-xl '} header="all of my events">
                     <EventsGlobelList arr={arAll} />
