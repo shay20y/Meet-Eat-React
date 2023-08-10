@@ -23,7 +23,7 @@ export default function FindByCat() {
     if (searchParams.get('s') != null && searchParams.get('c') != null) {
       doApiG(searchParams.get('s'), searchParams.get('c'))
     } else {
-      doApiG('a', 3)
+      doApiG('s', 3)
     }
   }, []);
 
