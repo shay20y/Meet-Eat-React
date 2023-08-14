@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { EVENT_DELETE_URL__DELETE, EVENT_URL__GET_POST } from '../../../constant/constant';
 import { errorToastGlobel, successToastGlobel } from '../../../utils/toastMes';
+import AuthAdminComp from '../users/authAdminComp';
 
 export default function EventListAdmin() {
     const [ar, setAr] = useState([])
@@ -24,13 +25,11 @@ export default function EventListAdmin() {
 
     const deleteItem = async (_delId) => {
         try {
-            if (window.confirm("Delete item?")) {
                 const data = await doApiMethod(EVENT_DELETE_URL__DELETE, "DELETE");
                 if (data.deletedCount) {
                     successToastGlobel()
                     doApi();
                 }
-            }
         }
         catch (error) {
             successToastGlobel()
@@ -40,7 +39,8 @@ export default function EventListAdmin() {
 
 
     return (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg  mt-9">
+            <AuthAdminComp/>
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -79,7 +79,7 @@ export default function EventListAdmin() {
                                 </td>
                                 <td className="px-6 py-4 ">
                                     <button onClick={() => {
-                                        deleteItem(item.event_id)
+                                         if (window.confirm(`Delete ${item.title}?`)) {deleteItem(item.event_id)}
                                     }} className='bg-red-500 hover:bg-blue-700  text-white font-bold py-1 px-2 rounded'><i className="fa fa-trash-o" aria-hidden="true"></i>
                                     </button>
                                 </td>

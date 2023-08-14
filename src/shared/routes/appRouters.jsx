@@ -22,41 +22,41 @@ import Test from '../components/test';
 // import SearchMapCanvas from '../components/api/map/searchMapCanvas';
 
 export default function AppRouters() {
-    return (
-      <BrowserRouter>
-            <Routes>
+  return (
+    <BrowserRouter>
+      <Routes>
         <Route path="/admin/*" element={<HeaderAdmin />} />
         <Route path="/*" element={<Header />} />
       </Routes>
-        <Routes>  
-          {/* admin */}
-          <Route path="/admin" element={<LoginAdmin />} />
-          <Route path="/admin/events" element={<EventListAdmin />} />
-          <Route path="/admin/users" element={<UserList />} />
-          <Route path="/admin/user/events/:id" element={<EeventListAdminForUser />} />
+      <Routes>
+        {/* admin */}
+        <Route path="/admin" element={<LoginAdmin />} />
+        <Route path="/admin/events" element={<EventListAdmin />} />
+        <Route path="/admin/users" element={<UserList />} />
+        <Route path="/admin/user/events/:id" element={<EeventListAdminForUser />} />
 
-          <Route path="/" element={<Index />} />
-          <Route path="/manageEvents" element={<ManageEvents />} />
-          <Route path="/ManagePaticipants/:id" element={<ManagePaticipants />} />
-          <Route path="/myEvent/edit/:id" element={<EditEvent />} />
-          <Route path="/createEvent" element={<CreateEvent />} />
-          <Route path="/event/:id" element={<Event />} />
-          <Route path="/JoinToEvent/:id" element={<JoinToEvent />} />
-          
-
-          <Route path="/logIn" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-  
-
-          {/* api */}
-          <Route path="/findByCat" element={<FindByCat />} />
-          <Route path="/singleMeal/:id" element={<SingleMeal />} />
-          <Route path="/test" element={<Test />} />
+        <Route path="/" element={<Index />} />
+        <Route path="/manageEvents" element={<ManageEvents />} />
+        <Route path="/ManagePaticipants/:id" element={<ManagePaticipants />} />
+        <Route path="/myEvent/edit/:id" element={<EditEvent />} />
+        <Route path="/createEvent" element={<CreateEvent />} />
+        <Route path="/event/:id" element={<Event />} />
+        <Route path="/JoinToEvent/:id" element={<JoinToEvent />} />
 
 
-          <Route path="/*" element={<Page404 />} />
-        </Routes>
-      </BrowserRouter>
-    );
-  }
-  
+        <Route path="/logIn" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+
+        {/* api */}
+        <Route path="/findByCat" element={<FindByCat />} />
+        <Route path="/singleMeal/:id" element={<SingleMeal />} />
+        <Route path="/test" element={<Test />} />
+
+
+        <Route path="/*" element={<Page404 />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+

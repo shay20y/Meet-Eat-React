@@ -5,7 +5,7 @@ import { useApiHooks } from '../../../hooks/useApiHooks';
 
 export default function UserItem(props) {
 
-    const {useApiMethodAxios } = useApiHooks();
+    const { useApiMethodAxios } = useApiHooks();
 
     const doApiUsers = props.doApiUsers
     const item = props.item
@@ -22,31 +22,29 @@ export default function UserItem(props) {
 
     const changeRole = async (userInfo, newRole) => {
         try {
-          const url = `${USER_ROLE_UPDATE_URL__PATCH}/${userInfo.user_id}/${newRole}`;
-          const data = await useApiMethodAxios(url, 'PATCH');
-          if (data.fieldCount == 0) {
-            doApiUsers();
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      const deleteItem = async () => {
-        try {
-          if (window.confirm('Delete item?')) {
-            const url = USER_URL__GET_POST_DELETE+ '/' + item.user_id;
-            const data = await useApiMethodAxios(url, 'DELETE');
-            console.log(data,'data');
-            if (data.fieldCount!=null) {
+            const url = `${USER_ROLE_UPDATE_URL__PATCH}/${userInfo.user_id}/${newRole}`;
+            const data = await useApiMethodAxios(url, 'PATCH');
+            if (data.fieldCount == 0) {
                 doApiUsers();
             }
-          }
         } catch (error) {
-          console.log(error);
-          alert('There is a problem');
+            console.log(error);
         }
-      };
+    };
+
+    const deleteItem = async () => {
+        try {
+            const url = USER_URL__GET_POST_DELETE + '/' + item.user_id;
+            const data = await useApiMethodAxios(url, 'DELETE');
+            console.log(data, 'data');
+            if (data.fieldCount != null) {
+                doApiUsers();
+            }
+        } catch (error) {
+            console.log(error);
+            alert('There is a problem');
+        }
+    };
 
     return (
         <tr
@@ -58,13 +56,7 @@ export default function UserItem(props) {
             <td className='whitespace-nowrap px-6 py-4'>{item.name}</td>
             <td className='whitespace-nowrap px-6 py-4'>{item.email}</td>
             <td className="whitespace-nowrap px-6 py-4 text-black">
-                <select
-                    defaultValue={item.role}
-                    onChange={(event) => {onChangeBtn(event)}}
-
-
-
-                >
+                <select  defaultValue={item.role}onChange={(event) => { onChangeBtn(event) }}>       
                     <option value="admin">admin</option>
                     <option value="user">user</option>
                     <option value="banned">banned</option>
@@ -82,10 +74,7 @@ export default function UserItem(props) {
                 )}
             </td>
             <td className='px-6 py-4'>
-                <button
-                    onClick={() => deleteItem(item._id)}
-                    className='btn btn-danger'
-                >
+                <button onClick={() => { if (window.confirm(`Delete ${item.name}?`)) { deleteItem(item.user_id) } }} className='btn btn-danger'>
                     X
                 </button>
             </td>

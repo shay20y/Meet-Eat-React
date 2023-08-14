@@ -69,7 +69,7 @@ export default function EventsGlobelList(props) {
                       <td className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
                         <button
                           onClick={() => {
-                            nav('/ManagePaticipants/' + item.event_id);
+                            nav('/ManagePaticipants/' + item.event_id +"?host=1");
                           }}
                           className="bg-blue-700 hover:bg-green-500 text-white font-bold py-1 px-2 rounded"
                         >

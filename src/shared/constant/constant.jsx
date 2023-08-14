@@ -16,6 +16,7 @@ export const USER_CHACK_TOKEN_URL__GET = `${API_URL}/users/checkToken`;
 
 // Events Routes
 export const EVENT_URL__GET_POST = `${API_URL}/events`;
+export const EVENT_URL__GET_POST_logged = `${API_URL}/events/loggedIn`;
 export const EVENT_WHITE_USER_INFO_URL__GET = `${API_URL}/events/forShow`;
 export const EVENT_USERS_URL__GET = `${API_URL}/events/users`;
 export const EVENT_SINGLE_URL__GET = `${API_URL}/events/single`;
