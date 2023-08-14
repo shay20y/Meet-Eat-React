@@ -1,22 +1,31 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../context/userContext';
-import useUserInfo from '../hooks/useUserData';
+import { useApiHooks } from '../hooks/useApiHooks';
+import { USER_CHACK_TOKEN_URL__GET } from '../constant/constant';
 
 export default function ChackUserLogin() {
-    const { userInfo } = useContext(UserContext);
-    const {checkToken} = useUserInfo()
-
+    const {useApiGetAxios} = useApiHooks();
     const nav = useNavigate();
 
 
-    useEffect(() => {
-        console.log(userInfo);
-        checkToken();
-        if (userInfo.user_id == undefined){
-            nav('/signup')
-        }
+    useEffect(() => {       
+        getTokenData()
     }, [])
+
+
+    const getTokenData = async () => {
+        try {
+            const url = USER_CHACK_TOKEN_URL__GET;
+            const data = await useApiGetAxios(url);
+            if (data.role == "user") {
+              
+            }
+        } catch (error) {
+            nav("/login")
+            console.log(error);
+        }
+    }
+
 
     return (
         <>

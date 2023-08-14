@@ -42,6 +42,9 @@ export default function Header() {
               <li>
                 <Link to={`/admin/events`}>Event list</Link>
               </li>
+              <li>
+                <Link to={`/`}>Go Back</Link>
+              </li>
             </ul>
           </div>
 

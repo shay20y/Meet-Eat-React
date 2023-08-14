@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useContext} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { EVENT_URL__GET_POST } from '../../constant/constant';
+import { EVENT_URL__GET_POST, EVENT_URL__GET_POST_logged} from '../../constant/constant';
 import { useApiHooks } from '../../hooks/useApiHooks';
 import { errorToastGlobel } from '../../utils/toastMes';
+import { UserContext } from '../../context/userContext';
 
 export default function EventList() {
   const { useApiGetAxios } = useApiHooks();
   const [ar, setAr] = useState([]);
+  const { userInfo, userSignOut } = useContext(UserContext);
 
   const nav = useNavigate();
 
   useEffect(() => {
     doApi();
-  }, []);
+  }, [userInfo]);
 
   const doApi = async () => {
     try {
       try {
-        const data = await useApiGetAxios(EVENT_URL__GET_POST);
+        const url = localStorage["user_id"]?EVENT_URL__GET_POST_logged+"/"+localStorage["user_id"]:EVENT_URL__GET_POST;
+        const data = await useApiGetAxios(url);
         if (data.fatal === true) {
           return;
         }
