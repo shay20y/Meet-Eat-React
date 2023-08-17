@@ -5,11 +5,18 @@ import { TOKEN_KEY } from '../../services/userService';
 import { UserContext } from '../../context/userContext';
 import { useContext } from 'react';
 import { USER_INFO_KEY } from '../../constant/constant';
+import {
+  NovuProvider,
+  PopoverNotificationCenter,
+  NotificationBell,
+} from '@novu/notification-center';
 
 export default function Header() {
   const nav = useNavigate();
   const { userInfo, userSignOut } = useContext(UserContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const id = userInfo.user_id + "";
+
 
   useEffect(() => {
   }, [userInfo]);
@@ -24,6 +31,10 @@ export default function Header() {
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  function onNotificationClick(message) {
+    // your logic to handle the notification click
+    console.log(message)
+  }
 
   return (
     <header className='mb-5'>
@@ -35,7 +46,6 @@ export default function Header() {
                 <img className="w-24" src="/public/img/logos/(1).png" alt="" />
               </Link>
             </div>
-
             <ul className="hidden sm:flex space-x-4">
               <li>
                 <Link to={'/'}>Home</Link>
@@ -55,6 +65,13 @@ export default function Header() {
           {localStorage[TOKEN_KEY] && userInfo != null ? (
             <div className="flex items-center">
               <p className="p-2">{userInfo.name} </p>
+              <div>
+                <NovuProvider subscriberId={id} applicationIdentifier={'gWNsf_ReNai_'}>
+                  <PopoverNotificationCenter onNotificationClick={onNotificationClick} colorScheme={'dark'}>
+                    {({ unseenCount }) => <NotificationBell unseenCount={unseenCount} />}
+                  </PopoverNotificationCenter>
+                </NovuProvider>
+              </div>
               <button
                 onClick={onLogOut}
                 className="ml-4 px-4 py-2 text-white rounded-lg bg-blue-600 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-blue-300"
