@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { EVENT_DELETE_URL__DELETE, EVENT_URL__GET_POST } from '../../../constant/constant';
 import { errorToastGlobel, successToastGlobel } from '../../../utils/toastMes';
 
+
 export default function EventListAdmin() {
     const [ar, setAr] = useState([])
 

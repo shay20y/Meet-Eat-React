@@ -10,7 +10,7 @@ import { successToast } from '../../utils/toastMes';
 export default function Login() {
   const nav = useNavigate();
 
-  const { useApiMethodFetch } = useApiHooks();
+  const { useApiMethodFetch,useApiMethodAxios } = useApiHooks();
   const { checkToken } = useContext(UserContext);
 
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -22,7 +22,7 @@ export default function Login() {
 
   const doApiPost = async (_bodyData) => {
     try {
-      const data = await useApiMethodFetch(LOGIN_URL__POST, 'POST', _bodyData);
+      const data = await useApiMethodAxios(LOGIN_URL__POST, 'POST', _bodyData);
       if (data.token) {
         localStorage.setItem(TOKEN_KEY, data.token);
         checkToken();
