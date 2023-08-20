@@ -35,6 +35,7 @@ export default function ManagePaticipants() {
     };
 
     const doApiApproval = async (event_id, user_id) => {
+        console.log(event_id, user_id)
         const bodyData = {
             "user_id": user_id,
             "event_id": event_id
