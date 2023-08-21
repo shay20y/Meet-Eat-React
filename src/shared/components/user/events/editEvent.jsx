@@ -67,7 +67,7 @@ export default function EditEvent() {
 
   return (
     <div className='container'>
-      <h1 className="text-2xl font-bold my-4">Edit category form</h1>
+      <h1 className="text-2xl font-bold my-4">Edit Your Event</h1>
       {item.title ?
         <form onSubmit={handleSubmit(onSubForm)} className="max-w-md mx-auto">
           <div className="mb-4">

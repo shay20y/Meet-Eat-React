@@ -38,14 +38,14 @@ export default function UserList() {
 
     <div className='container relative'>
       <AuthAdminComp/>
-      <h1 className='text-4xl font-bold mb-8'>List of users in the system</h1>
+      <h1 className='text-4xl font-bold my-8 text-center'>List of users in the system</h1>
       <div className='overflow-x-auto'>
         <div className='w-full overflow-hidden'>
           <table className='table-auto w-full text-sm text-left '>
-            <thead className='text-xs text-white uppercase bg-gray-50 dark:bg-gray-700 dark:text-white'>
+            <thead className='text-xs text-black uppercase bg-gray-50 dark:bg-gray-700 dark:text-white'>
               <tr>
                 <th className='px-6 py-4'>#</th>
-                <th className='px-6 py-4'>_id</th>
+                <th className='px-6 py-4'>id</th>
                 <th className='px-6 py-4'>Name</th>
                 <th className='px-6 py-4'>Email</th>
                 <th className='px-6 py-4'>Role</th>

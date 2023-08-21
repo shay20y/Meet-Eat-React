@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useApiHooks } from '../../../hooks/useApiHooks';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams,useSearchParams } from 'react-router-dom';
 import ChackUserLogin from '../../../utils/chackUserLogin';
 import { EVENT_USERS_APPROVE_URL__PATCH, USER_EVENT_PARTICIPANTS_URL__GET } from '../../../constant/constant';
 import { UserContext } from '../../../context/userContext';
@@ -11,6 +11,7 @@ export default function ManagePaticipants() {
     const [ar, setAr] = useState([]);
     const { useApiGetAxios, useApiMethodAxios } = useApiHooks();
     const params = useParams();
+    const [query] = useSearchParams();
     const nav = useNavigate();
 
 
@@ -22,7 +23,8 @@ export default function ManagePaticipants() {
 
     const doApi = async () => {
         try {
-            const url = USER_EVENT_PARTICIPANTS_URL__GET + '/' + params['id'];
+            const host = query.get("host")?"?host=1":"";
+            const url = USER_EVENT_PARTICIPANTS_URL__GET + '/' + params['id']+host;
             const data = await useApiGetAxios(url);
             console.log(data, 'data');
             setAr(data);
@@ -33,6 +35,7 @@ export default function ManagePaticipants() {
     };
 
     const doApiApproval = async (event_id, user_id) => {
+        console.log(event_id, user_id)
         const bodyData = {
             "user_id": user_id,
             "event_id": event_id
