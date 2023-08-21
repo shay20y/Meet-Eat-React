@@ -15,7 +15,7 @@ export default function JoinToEvent() {
     useEffect(() => {
         checkToken();
         doApi();
-    }, [params, sended]);
+    }, [params]);
 
     const doApi = async () => {
         const url = EVENT_JOIN__POST + '/' + params['id'];
