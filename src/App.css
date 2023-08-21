@@ -51,3 +51,7 @@ width: 100%;
     background: #ecc917;
 }
 
+.accordionItem .szh-accordion__item-btn{
+    width: 100%;
+}
+
