@@ -65,11 +65,11 @@ export default function ManageEvents() {
         <>
             <ChackUserLogin />
             <Accordion className=''>
-                <AccordionItem className={'accordionItem text-center m-5 p-2 text-2xl rounded-xl '} header="all of my events">
+                <AccordionItem className={'accordionItem text-center m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:text-white'} header="⮟ All of my events ⮟">
                     <EventsGlobelList arr={arAll} />
                 </AccordionItem>
 
-                <AccordionItem className={'accordionItem text-center m-5 p-2 text-2xl rounded-xl '} header="Mange your events">
+                <AccordionItem className={'accordionItem text-center m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:text-white'} header="⮟ Mange your events ⮟">
                     <div className="relative overflow-x-auto  sm:rounded-lg py-7">
                         <div className="w-full overflow-hidden">
                             <div className="w-full overflow-x-auto">
