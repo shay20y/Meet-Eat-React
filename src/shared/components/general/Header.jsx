@@ -37,7 +37,7 @@ export default function Header() {
   }
 
   return (
-    <header className='mb-5'>
+    <header className='mb-5 text-t-white'>
       <div className="mx-auto px-4 py-6 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -46,7 +46,7 @@ export default function Header() {
                 <img className="w-24" src="/public/img/logos/(1).png" alt="" />
               </Link>
             </div>
-            <ul className="hidden sm:flex space-x-4">
+            <ul className="hidden sm:flex space-x-4 font-semibold">
               <li>
                 <Link to={'/'}>Home</Link>
               </li>
@@ -64,7 +64,9 @@ export default function Header() {
 
           {localStorage[TOKEN_KEY] && userInfo != null ? (
             <div className="flex items-center">
+              <Link to={'/profile'}>
               <p className="p-2">{userInfo.name} </p>
+              </Link>
               <div>
                 <NovuProvider subscriberId={id} applicationIdentifier={'gWNsf_ReNai_'}>
                   <PopoverNotificationCenter onNotificationClick={onNotificationClick} colorScheme={'dark'}>
@@ -74,7 +76,7 @@ export default function Header() {
               </div>
               <button
                 onClick={onLogOut}
-                className="ml-4 px-4 py-2 text-white rounded-lg bg-blue-600 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                className="ml-4 px-4 py-2 text-t-white rounded-lg bg-secondary hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-blue-300"
               >
                 Log out
               </button>
@@ -84,13 +86,13 @@ export default function Header() {
               <div className="log_in ">
                 <Link
                   to="/login"
-                  className="mr-4 px-4 py-2 text-white bg-blue-600 hover:bg-green-500 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"
+                  className="mr-4 px-4 py-2  bg-secondary hover:bg-btn-hover rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"
                 >
                   Log in
                 </Link>
                 <Link
                   to="/signup"
-                  className="px-4 py-2 text-white bg-blue-600 hover:bg-green-500 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"
+                  className="px-4 py-2  bg-secondary hover:bg-btn-hover rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"
                 >
                   Sign up
                 </Link>
@@ -129,7 +131,7 @@ export default function Header() {
                 <Link
                   to={'/'}
                   onClick={handleMenuToggle}
-                  className="block px-4 py-2 text-gray-600 hover:text-gray-900"
+                  className="block px-4 py-2 hover:text-gray-900"
                 >
                   Home
                 </Link>
@@ -138,7 +140,7 @@ export default function Header() {
                 <Link
                   to={`/ManageEvents`}
                   onClick={handleMenuToggle}
-                  className="block px-4 py-2 text-gray-600 hover:text-gray-900"
+                  className="block px-4 py-2 hover:text-gray-900"
                 >
                   Manage Events
                 </Link>
@@ -147,7 +149,7 @@ export default function Header() {
                 <Link
                   to={`/createEvent`}
                   onClick={handleMenuToggle}
-                  className="block px-4 py-2 text-gray-600 hover:text-gray-900"
+                  className="block px-4 py-2 hover:text-gray-900"
                 >
                   create Event
                 </Link>
@@ -156,7 +158,7 @@ export default function Header() {
                 <Link
                   to={`/findByCat`}
                   onClick={handleMenuToggle}
-                  className="block px-4 py-2 text-gray-600 hover:text-gray-900"
+                  className="block px-4 py-2 hover:text-gray-900"
                 >
                   find recipe
                 </Link>

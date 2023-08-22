@@ -53,7 +53,7 @@ export default function Header() {
               <p className="p-2">{userInfo.name} </p>
               <button
                 onClick={onLogOut}
-                className="ml-4 px-4 py-2 text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                className="ml-4 px-4 py-2 text-t-white  bg-main rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
               >
                 Log out
               </button>
@@ -63,13 +63,13 @@ export default function Header() {
               <div className="log_in ">
                 <Link
                   to="/login"
-                  className="mr-4 px-4 py-2 text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                  className="mr-4 px-4 py-2  bg-main rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
                 >
                   Log in
                 </Link>
                 <Link
                   to="/signup"
-                  className="px-4 py-2 text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                  className="px-4 py-2  bg-main rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
                 >
                   Sign up
                 </Link>
@@ -80,7 +80,7 @@ export default function Header() {
           <div className="sm:hidden">
             <button
               onClick={handleMenuToggle}
-              className="text-gray-600 focus:outline-none focus:text-gray-900"
+              className=" text-t-white focus:outline-none focus:text-gray-900"
             >
               <svg
                 className="w-6 h-6"
@@ -108,7 +108,7 @@ export default function Header() {
                 <Link
                   to={`/admin/users`}
                   onClick={handleMenuToggle}
-                  className="block px-4 py-2 text-gray-600 hover:text-gray-900"
+                  className="block px-4 py-2 hover:text-gray-900"
                 >
                   Users list
                 </Link>
@@ -117,7 +117,7 @@ export default function Header() {
                 <Link
                   to={`/admin/events`}
                   onClick={handleMenuToggle}
-                  className="block px-4 py-2 text-gray-600 hover:text-gray-900"
+                  className="block px-4 py-2 hover:text-gray-900"
                 >
                   Event list
                 </Link>

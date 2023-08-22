@@ -5,11 +5,11 @@ export default function Test() {
         <div>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
-                    <label for="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
+                    <label for="first_name" className="block mb-2 text-sm font-medium ">First name</label>
                     <select
                         id='area'
                         onChange={(event) => doApiAreaList(event.target.value)}
-                        className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white'
+                        className='bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5'
 
                     >
                         <option defaultValue='select area'>select area</option>
@@ -21,11 +21,11 @@ export default function Test() {
                     </select>
                 </div>
                 <div>
-                    <label for="last_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
+                    <label for="last_name" className="block mb-2 text-sm font-medium ">Last name</label>
                     <select
                         id='categories'
                         onChange={(event) => doApiCatList(event.target.value)}
-                        className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white'
+                        className='bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5'
                     >
                         <option defaultValue='select categories'>select categories</option>
                         {arCat.map((item) => (
@@ -37,7 +37,7 @@ export default function Test() {
                 </div>
             </div>
             <div className="mb-6">
-                <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
+                <label for="email" className="block mb-2 text-sm font-medium ">Email address</label>
                 <form onSubmit={handleSubmit(onSubForm)}>
                     <input
                         placeholder='Search a recipe'
@@ -46,7 +46,7 @@ export default function Test() {
                         type='text'
                         id='title'
                     />
-                    <button className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white'>
+                    <button className='bg-t-white border border-gray-300 text-sm rounded-lg block w-full p-2.5 '>
                         search
                     </button>
                 </form>

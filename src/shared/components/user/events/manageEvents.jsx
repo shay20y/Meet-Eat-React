@@ -27,7 +27,6 @@ export default function ManageEvents() {
         try {
             const url = `${USER_EVENT_URL__GET}`;
             const data = await useApiGetAxios(url);
-            console.log(data);
             setArAll(data);
         } catch (error) {
             console.log(error);
@@ -39,7 +38,6 @@ export default function ManageEvents() {
         try {
             const url = `${USER_EVENT_URL__GET}?host=1`;
             const data = await useApiGetAxios(url);
-            console.log(data, 'data');
             setArMange(data);
         } catch (error) {
             console.log(error);
@@ -65,17 +63,20 @@ export default function ManageEvents() {
         <>
             <ChackUserLogin />
             <Accordion className=''>
-                <AccordionItem className={'accordionItem text-center m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:text-white'} header="⮟ All of my events ⮟">
+                <AccordionItem className={'bg-secondary text-t-white  text-center m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:'} 
+                
+                header={({ state }) => `${state.isEnter?"⮝":"⮟"} All of my events ${state.isEnter?"⮝":"⮟"}`}
+                >
                     <EventsGlobelList arr={arAll} />
                 </AccordionItem>
 
-                <AccordionItem className={'accordionItem text-center m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:text-white'} header="⮟ Mange your events ⮟">
+                <AccordionItem className={'bg-secondary text-center text-t-white  m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:'} header={({ state }) => `${state.isEnter?"⮝":"⮟"}  Mange your events ${state.isEnter?"⮝":"⮟"}`}>
                     <div className="relative overflow-x-auto  sm:rounded-lg py-7">
                         <div className="w-full overflow-hidden">
                             <div className="w-full overflow-x-auto">
                                 {arMange.length > 0 ? (
-                                    <table className="w-full text-sm text-left text-black dark:text-white table-auto min-w-full divide-y divide-gray-200">
-                                        <thead className="text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-white">
+                                    <table className="w-full text-sm text-left text-black  table-auto min-w-full divide-y divide-gray-200">
+                                        <thead className="text-xs uppercase bg-gray-50 ">
                                             <tr>
                                                 <th
                                                     scope="col"
@@ -120,11 +121,11 @@ export default function ManageEvents() {
                                                 return (
                                                     <tr
                                                         key={item.event_id + i + 1}
-                                                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                                                        className="bg-t-white border-b hover:bg-gray-50 "
                                                     >
                                                         <th
                                                             scope="row"
-                                                            className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6 font-medium whitespace-nowrap dark:text-white"
+                                                            className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6 font-medium whitespace-nowrap "
                                                         >
                                                             {item.title}
                                                         </th>
@@ -142,7 +143,7 @@ export default function ManageEvents() {
                                                                 onClick={() => {
                                                                     nav('/ManagePaticipants/' + item.event_id);
                                                                 }}
-                                                                className="bg-blue-700 hover:bg-green-500 text-white font-bold py-1 px-2 rounded"
+                                                                className="bg-main hover:bg-btn-hover  font-bold py-1 px-2 rounded"
                                                             >
                                                                 <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                             </button>
@@ -153,7 +154,7 @@ export default function ManageEvents() {
                                                                 onClick={() => {
                                                                     if (window.confirm(`Delete ${item.title}?`)) { deleteItem(item.event_id);}                                                                  
                                                                 }}
-                                                                className="bg-orange-500 hover:bg-red-500 text-white font-bold p-2 rounded"
+                                                                className="bg-orange-500 hover:bg-red-500  font-bold p-2 rounded"
                                                             >
                                                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
                                                             </button>
@@ -163,7 +164,7 @@ export default function ManageEvents() {
                                                                 onClick={() => {
                                                                     nav('/myEvent/edit/' + item.event_id);
                                                                 }}
-                                                                className="bg-blue-700 hover:bg-green-500 text-white font-bold p-2 rounded"
+                                                                className="bg-main hover:bg-btn-hover  font-bold p-2 rounded"
                                                             >
                                                                 <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                             </button>

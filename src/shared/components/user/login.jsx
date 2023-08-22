@@ -16,7 +16,7 @@ export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubForm = (_bodyData) => {
-    console.log(_bodyData);
+    // console.log(_bodyData);
     doApiPost(_bodyData);
   }
 
@@ -36,7 +36,7 @@ export default function Login() {
 
   return (
     <div className="flex items-center justify-center py-6">
-      <div className="max-w-lg w-full p-6 bg-white shadow-md rounded">
+      <div className="max-w-lg w-full p-6 bg-t-white shadow-md rounded">
         <h1 className="text-4xl font-bold text-center mb-8">Site Login</h1>
         <form onSubmit={handleSubmit(onSubForm)}>
           <div className="mb-6">
@@ -45,7 +45,7 @@ export default function Login() {
             </label>
             <input
               {...register('email', { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
-              className="w-full appearance-none bg-gray-200 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="w-full appearance-none bg-gray-200 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-t-white focus:border-gray-500"
               type="text"
               placeholder="example@end.co.il"
             />
@@ -57,7 +57,7 @@ export default function Login() {
             </label>
             <input
               {...register('password', { required: true, minLength: 3 })}
-              className="w-full appearance-none bg-gray-200 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="w-full appearance-none bg-gray-200 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-t-white focus:border-gray-500"
               type="password"
               placeholder="******************"
             />
@@ -66,7 +66,7 @@ export default function Login() {
             )}
           </div>
           <div className="flex items-center justify-between">
-            <button className="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+            <button className="bg-main hover:bg-btn-hover  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
               Sign In
             </button>
           </div>

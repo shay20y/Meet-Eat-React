@@ -1,5 +1,9 @@
 body {
-    background: rgba(246, 185, 147, 0.274);
+    background: #8ed7ec;
+}
+
+* {
+    /* color: #00f6ff; */
 }
 
 /* .container {
@@ -26,32 +30,27 @@ li {
 header {
     border-radius: 12px;
     /* border: 5px blue solid; */
-    box-shadow: 0px 12px 31px 7px rgba(0, 0, 0, 0.46);
+    /* box-shadow: 0px 12px 31px 7px rgba(0, 0, 0, 0.46); */
     padding: 8px;
-    background: rgba(237, 205, 185);
+    /* background: #f87125; */
     /* position: sticky; */
     top: 0;
     left: 0;
     z-index: 0.9
 }
 
-.btnIng{
-width: 100%;
+.btnIng {
+    width: 100%;
 }
 
 .popup {
     z-index: 1;
 }
 
-.mealCard{
+.mealCard {
     z-index: -0.9;
 }
 
-.accordionItem{
-    background: #ecc917;
-}
-
-.accordionItem .szh-accordion__item-btn{
+.accordionItem .szh-accordion__item-btn {
     width: 100%;
 }
-

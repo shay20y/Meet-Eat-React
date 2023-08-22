@@ -19,6 +19,7 @@ import ManagePaticipants from '../components/user/events/managePaticipants';
 import FindByCat from '../components/api/meals/findByCat';
 import SingleMeal from '../components/api/meals/singleMeal';
 import Test from '../components/test';
+import Profile from '../components/user/profile';
 // import SearchMapCanvas from '../components/api/map/searchMapCanvas';
 
 export default function AppRouters() {
@@ -46,6 +47,8 @@ export default function AppRouters() {
 
         <Route path="/logIn" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
+        <Route path="/profile" element={<Profile />} />
 
 
         {/* api */}

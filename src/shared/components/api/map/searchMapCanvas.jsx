@@ -33,7 +33,7 @@
 //       <form onSubmit={onSub} className="flex items-center">
 //         <label className="mr-2">Search:</label>
 //         <input ref={searchRef} type="search" className="border border-gray-300 rounded px-2 py-1" />
-//         <button className="ml-2 px-4 py-2 text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+//         <button className="ml-2 px-4 py-2  bg-main rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
 //           Search
 //         </button>
 //       </form>
