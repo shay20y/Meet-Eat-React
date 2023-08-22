@@ -36,7 +36,6 @@ export default function UserItem(props) {
         try {
             const url = USER_URL__GET_POST_DELETE + '/' + item.user_id;
             const data = await useApiMethodAxios(url, 'DELETE');
-            console.log(data, 'data');
             if (data.fieldCount != null) {
                 doApiUsers();
             }
@@ -49,7 +48,7 @@ export default function UserItem(props) {
     return (
         <tr
             key={i}
-            className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'
+            className='bg-t-white border-b '
         >
             <td className='whitespace-nowrap px-6 py-4'>{i + 1}</td>
             <td className='whitespace-nowrap px-6 py-4'>{item.user_id}</td>
@@ -63,7 +62,7 @@ export default function UserItem(props) {
                 </select>
                 {btnChangeRole && (
                     <button
-                        className="bg-transparent hover:bg-green-400 text-green-300 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded"
+                        className="bg-transparent hover:bg-green-400 text-green-300 font-semibold hover: border border-green-300 hover:border-transparent rounded"
                         onClick={() => {
                             changeRole(item, selectedRole);
                             setBtnChangeRole(false);

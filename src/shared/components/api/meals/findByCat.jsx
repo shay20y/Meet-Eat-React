@@ -99,7 +99,6 @@ export default function FindByCat() {
   //     setArResult([]);
   //     const url = API_MEAL_SEARCH + SearchVel;
   //     const { data } = await axios(url);
-  //     console.log(data);
   //     if (data.meals != null) {
   //       setArResult(data.meals);
   //       localStorage[LAST_SEARCH] = SearchVel
@@ -114,7 +113,7 @@ export default function FindByCat() {
 
   return (
     <div className='my-8'>
-      <div className="bg-orange-400 mb-4">
+      <div className="bg-main mb-4 border-b-2 border-t-black">
         <>
           <p className='text-2xl text-center p-3'>
             Welcome to Recipe Finder! you can search by area , categories or even by name
@@ -131,18 +130,18 @@ export default function FindByCat() {
                   type='text'
                   id='title'
                 />
-                <button className='text-white border border-gray-300  text-sm rounded-lg block  p-2.5 bg-blue-600 hover:bg-green-500'>
+                <button className=' border border-gray-300  text-sm rounded-lg block  p-2.5 bg-secondary hover:bg-btn-hover'>
                   search
                 </button>
               </form>
             </div>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
               <div>
-                <label for="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Find by area</label>
+                <label for="first_name" className="block mb-2 text-sm font-medium ">Find by area</label>
                 <select
                   id='area'
                   onChange={(event) => doApiG(event.target.value, 1)}
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white'
+                  className='bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 '
 
                 >
                   <option defaultValue='select area'>select area</option>
@@ -154,11 +153,11 @@ export default function FindByCat() {
                 </select>
               </div>
               <div>
-                <label for="last_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Find by categories</label>
+                <label for="last_name" className="block mb-2 text-sm font-medium ">Find by categories</label>
                 <select
                   id='categories'
                   onChange={(event) => doApiG(event.target.value, 0)}
-                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white'
+                  className='bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 '
                 >
                   <option defaultValue='select categories'>select categories</option>
                   {arCat.map((item) => (

@@ -9,8 +9,8 @@ export default function EventsGlobelList(props) {
       <div className="w-full overflow-hidden">
         <div className="w-full overflow-x-auto">
           {arr.length > 0 ? (
-            <table className="w-full text-sm text-left text-black dark:text-white table-auto min-w-full divide-y divide-gray-200">
-              <thead className="text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-white">
+            <table className="w-full text-sm text-left text-black  table-auto min-w-full divide-y divide-gray-200">
+              <thead className="text-xs uppercase bg-gray-50 ">
                 <tr>
                   <th
                     scope="col"
@@ -49,11 +49,11 @@ export default function EventsGlobelList(props) {
                   return (
                     <tr
                       key={item.event_id + i+1}
-                      className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                      className="bg-t-white border-b  hover:bg-gray-50 "
                     >
                       <th
                         scope="row"
-                        className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6 font-medium whitespace-nowrap dark:text-white"
+                        className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6 font-medium whitespace-nowrap "
                       >
                         {item.title}
                       </th>
@@ -71,7 +71,7 @@ export default function EventsGlobelList(props) {
                           onClick={() => {
                             nav('/ManagePaticipants/' + item.event_id +"?host=1");
                           }}
-                          className="bg-blue-700 hover:bg-green-500 text-white font-bold py-1 px-2 rounded"
+                          className="bg-main hover:bg-btn-hover  font-bold py-1 px-2 rounded"
                         >
                           <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </button>

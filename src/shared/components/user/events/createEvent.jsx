@@ -30,7 +30,7 @@ export default function CreateEvent() {
 
 
   const onSubForm = (_bodyData) => {
-    console.log(_bodyData);
+    // console.log(_bodyData);
     doApiPost(_bodyData);
   };
 
@@ -53,7 +53,7 @@ export default function CreateEvent() {
     <>
       <ChackUserLogin />
       <div className="container mx-auto">
-        <form onSubmit={handleSubmit(onSubForm)} className="max-w-md mx-auto px-4 bg-white">
+        <form onSubmit={handleSubmit(onSubForm)} className="max-w-md mx-auto p-6 bg-t-white">
           <div>
             <h2 className="text-4xl font-bold text-center mb-8 pt-6">Add a New Event</h2>
           </div>
@@ -89,12 +89,12 @@ export default function CreateEvent() {
 
             <div className="mb-4">
               <label for="event_date" className="block mb-2">Event Date</label>
-              <input {...register("event_date", { required: true })} defaultValue={defaultDate} className="w-full p-2 border border-gray-300 rounded" type="date" id="event_date" />
+              <input {...register("event_date", { required: true })} min={defaultDate} defaultValue={defaultDate} className="w-full p-2 border border-gray-300 rounded" type="date" id="event_date" />
               {errors.event_date && <div className="text-red-500 mt-1">* Enter a valid event date</div>}
             </div>
           </div>
 
-          <button className="text-white px-4 py-2 rounded bg-blue-600 hover:bg-green-500">Add new</button>
+          <button className=" px-4 py-2 rounded bg-secondary hover:bg-btn-hover">Add new</button>
         </form>
       </div>
     </>

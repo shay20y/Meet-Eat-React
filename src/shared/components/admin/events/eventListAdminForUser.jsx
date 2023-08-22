@@ -45,8 +45,8 @@ export default function EeventListAdminForUser() {
 
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left text-white dark:text-white">
-            <thead className="text-xs text-white uppercase bg-gray-50 dark:bg-gray-700 dark:text-white">
+        <table className="w-full text-sm text-left  ">
+            <thead className="text-xs  uppercase bg-gray-50 ">
                 <tr>
                     <th scope="col" className="px-6 py-4">
                         Title
@@ -68,8 +68,8 @@ export default function EeventListAdminForUser() {
             <tbody>
                 {ar.map((item, i) => {
                     return (
-                        <tr key={item.event_id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr key={item.event_id} className="bg-t-white border-b hover:bg-gray-50">
+                            <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap ">
                             {item.title}
                             </th>
                             <td className="px-6 py-4">
@@ -84,7 +84,7 @@ export default function EeventListAdminForUser() {
                             <td className="px-6 py-4 ">
                             <button onClick={()=>{
                                 deleteItem(item.event_id)
-                            }}  className='bg-red-500 hover:bg-blue-700  text-white font-bold py-1 px-2 rounded'><i className="fa fa-trash-o" aria-hidden="true"></i>
+                            }}  className='bg-red-500 hover:bg-main   font-bold py-1 px-2 rounded'><i className="fa fa-trash-o" aria-hidden="true"></i>
                                     </button>
                             </td>
                         </tr>

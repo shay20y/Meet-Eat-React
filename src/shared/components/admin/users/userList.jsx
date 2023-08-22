@@ -23,7 +23,6 @@ export default function UserList() {
     const page = query.get('page') || 1;
     try {
       const data = await useApiGetFetch(USER_URL__GET_POST);
-      console.log(data);
       setAr(data);
     } catch (error) {
       console.log(error);
@@ -42,7 +41,7 @@ export default function UserList() {
       <div className='overflow-x-auto'>
         <div className='w-full overflow-hidden'>
           <table className='table-auto w-full text-sm text-left '>
-            <thead className='text-xs text-black uppercase bg-gray-50 dark:bg-gray-700 dark:text-white'>
+            <thead className='text-xs text-black uppercase bg-gray-50'>
               <tr>
                 <th className='px-6 py-4'>#</th>
                 <th className='px-6 py-4'>id</th>

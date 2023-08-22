@@ -25,7 +25,7 @@ export default function AbcBtns({ doApiG }) {
                     onClick={() => {
                         doApiG(String.fromCharCode(x),3);
                     }}
-                    className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-green-500 focus:outline-none focus:ring focus:ring-blue-200 my-2"
+                    className="px-3 py-2 bg-secondary  rounded hover:bg-btn-hover focus:outline-none focus:ring focus:ring-blue-200 my-2"
                 >
                     {String.fromCharCode(x)}
                 </button>

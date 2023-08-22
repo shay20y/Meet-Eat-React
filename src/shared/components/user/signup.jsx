@@ -11,14 +11,13 @@ export default function Signup() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubForm = (_bodyData) => {
-        console.log(_bodyData);
+        // console.log(_bodyData);
         doApiPost(_bodyData);
     };
 
     const doApiPost = async (_bodyData) => {
         try {
             const data = await useApiMethodAxios(USER_URL__GET_POST, 'POST', _bodyData);
-            console.log(data);
             if (data.fieldCount!=null) {
                 successToast("successfully registered , Login please")
                 nav('/login');
@@ -35,7 +34,7 @@ export default function Signup() {
 
     return  (
         <div className="py-6 flex items-center justify-center ">
-            <div className="max-w-lg w-full p-6 bg-white shadow-md rounded">
+            <div className="max-w-lg w-full p-6 bg-t-white shadow-md rounded">
                 <h1 className="text-4xl font-bold text-center ">Sign up</h1>
                 <form onSubmit={handleSubmit(onSubForm)}>
                     <div className="mb-6">
@@ -44,7 +43,7 @@ export default function Signup() {
                         </label>
                         <input
                             {...register('name', { required: true, minLength: 2 })}
-                            className="w-full appearance-none bg-gray-200 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            className="w-full appearance-none bg-gray-200 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-t-white focus:border-gray-500"
                             type="text"
                             placeholder="Jane"
                         />
@@ -56,7 +55,7 @@ export default function Signup() {
                         </label>
                         <input
                             {...register('email', { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
-                            className="w-full appearance-none bg-gray-200 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            className="w-full appearance-none bg-gray-200 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-t-white focus:border-gray-500"
                             type="text"
                             placeholder="example@end.co.il"
                         />
@@ -68,7 +67,7 @@ export default function Signup() {
                         </label>
                         <input
                             {...register('password', { required: true, minLength: 3 })}
-                            className="w-full appearance-none bg-gray-200 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            className="w-full appearance-none bg-gray-200 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-t-white focus:border-gray-500"
                             type="password"
                             placeholder="******************"
                         />
@@ -77,7 +76,7 @@ export default function Signup() {
                         )}
                     </div>
                     <div className="flex items-center justify-between">
-                        <button className="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        <button className="bg-main hover:bg-btn-hover  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                             Sign Up
                         </button>
                     </div>

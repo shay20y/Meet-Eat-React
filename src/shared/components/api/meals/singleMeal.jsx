@@ -19,16 +19,15 @@ export default function SingleMeal() {
     const doApi = async () => {
         const url = API_MEAL_BY_ID + params["id"];
         const { data } = await axios(url)
-        console.log(data);
         setAr(data.meals[0])
         setStr((data.meals[0].strYoutube))
 
         // changeing youtube url string to make it compatiable with iframe
-        console.log(str.replace("watch?v=", "embed/"))
+        // console.log(str.replace("watch?v=", "embed/"))
     }
 
     return (
-        <div className={`min-h-full bg-white w-auto m-5 p-3`}>
+        <div className={`min-h-full bg-t-white w-auto m-5 p-3`}>
             <div className="detils-card flex flex-col-reverse md:flex-row text-black" >
 
                 <div className=" md:mr-4 items-center flex flex-col">
@@ -37,14 +36,14 @@ export default function SingleMeal() {
                     <img width={"80%"} src={ar.strMealThumb} alt={ar.strMeal} className="rounded-lg" />
                     <div>
                         {ar.strSource != null ?
-                            <button onClick={() => { window.open(ar.strSource, "_blank") }} className="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded">
+                            <button onClick={() => { window.open(ar.strSource, "_blank") }} className="bg-secondary hover:bg-btn-hover  font-bold py-2 px-4 rounded">
                                 View Recipe
                             </button>
                             :
                             <></>
                         }
                         &nbsp;
-                        <button onClick={() => { nav(-1) }} className="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded mt-5">
+                        <button onClick={() => { nav(-1) }} className="bg-main hover:bg-btn-hover  font-bold py-2 px-4 rounded mt-5">
                             go back
                         </button>
                     </div>

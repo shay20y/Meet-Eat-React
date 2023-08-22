@@ -27,7 +27,6 @@ export default function EditEvent() {
     try {
       const url = EVENT_SINGLE_URL__GET + '/' + params["id"];
       const data = await useApiGetAxios(url);
-      console.log(data[0]);
       setItem(data[0]);
       useSetConvertEventDate(data[0].event_date,setDefaultDate);
 
@@ -54,7 +53,7 @@ export default function EditEvent() {
     try {
       const url = EVENT_URL__GET_POST + '/' + params["id"];
       const data = await useApiMethodAxios(url, "PUT", strD);
-      console.log(data, 'data');
+      ;
       if (data.fieldCount != null) {
         successToastGlobel();
         nav("/myEvent");
@@ -116,7 +115,7 @@ export default function EditEvent() {
           
           </div>
 
-          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Update</button>
+          <button className="bg-secondary  px-4 py-2 rounded hover:bg-btn-hover">Update</button>
         </form> : <h2>Loading...</h2>}
     </div>
   )

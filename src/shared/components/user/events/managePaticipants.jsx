@@ -26,7 +26,7 @@ export default function ManagePaticipants() {
             const host = query.get("host")?"?host=1":"";
             const url = USER_EVENT_PARTICIPANTS_URL__GET + '/' + params['id']+host;
             const data = await useApiGetAxios(url);
-            console.log(data, 'data');
+            ;
             setAr(data);
         } catch (error) {
             console.log(error);
@@ -35,7 +35,6 @@ export default function ManagePaticipants() {
     };
 
     const doApiApproval = async (event_id, user_id) => {
-        console.log(event_id, user_id)
         const bodyData = {
             "user_id": user_id,
             "event_id": event_id
@@ -43,7 +42,7 @@ export default function ManagePaticipants() {
         try {
             const url = EVENT_USERS_APPROVE_URL__PATCH
             const data = await useApiMethodAxios(url, 'PATCH', bodyData)
-            console.log(data, 'data');
+            ;
             if (data.fieldCount != null) {
                 successToastGlobel();
                 doApi();
@@ -57,12 +56,12 @@ export default function ManagePaticipants() {
     return (
         <>
             <ChackUserLogin />
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg py-7">
+            <div className="relative overflow-x-auto  sm:rounded-lg py-7">
                 <div className="w-full overflow-hidden">
                     <div className="w-full overflow-x-auto ">
                         {ar.length > 0 ? (
                             <table className="w-full text-sm text-left table-auto min-w-full divide-y divide-gray-200 text-black ">
-                                <thead className="text-xs  uppercase bg-gray-50 dark:bg-gray-700">
+                                <thead className="text-xs  uppercase bg-gray-50 ">
                                     <tr>
                                         <th scope="col" className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
                                             name
@@ -80,7 +79,7 @@ export default function ManagePaticipants() {
                                         return (
                                             <tr
                                                 key={`${item.event_id}-${i}`}
-                                                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                                                className="bg-t-white border-b  hover:bg-gray-50 "
                                             >
                                                 <td className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">{item.name}</td>
                                                 <td className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">{item.email}</td>
@@ -89,7 +88,7 @@ export default function ManagePaticipants() {
                                                         <h3 className="text-green-500 font-semibold">Join successfully</h3>
                                                     ) : (
                                                         <button
-                                                            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+                                                            className="bg-blue-500 hover:bg-main  font-semibold py-2 px-4 rounded"
                                                             onClick={() => {
                                                                 doApiApproval(params['id'], item.user_id);
                                                             }}
@@ -108,7 +107,7 @@ export default function ManagePaticipants() {
                             <p>No events found</p>
                         )}
                     </div>
-                    <button onClick={() => { nav(-1) }} className="bg-blue-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded mt-5">
+                    <button onClick={() => { nav(-1) }} className="bg-secondary hover:bg-btn-hover  font-bold py-2 px-4 rounded mt-5">
                         go back
                     </button>
                 </div>
