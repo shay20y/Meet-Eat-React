@@ -9,14 +9,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
-const {doApiUser,userInfo,userSignOut ,checkToken} = useUserData()
+const {doApiUser,userInfo,userSignOut ,checkToken , role , checkTokenAndReturn} = useUserData()
 
   return (
 
     
     <UserContext.Provider value={{
-      userInfo,
-      doApiUser , userSignOut , checkToken
+      userInfo, role, 
+      doApiUser , userSignOut , checkToken ,checkTokenAndReturn
     }}>
       <main>
           <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useApiHooks } from '../../../hooks/useApiHooks';
-import { EVENT_DELETE_URL__DELETE, USER_EVENT_URL__GET } from '../../../constant/constant';
+import { EVENT_DELETE_URL__DELETE, USER_EVENT_BY_ID_URL__GET } from '../../../constant/constant';
 import { errorToastGlobel, successToastGlobel } from '../../../utils/toastMes';
 
 export default function EeventListAdminForUser() {
@@ -15,8 +15,9 @@ export default function EeventListAdminForUser() {
 
     const doApi = async () => {
         try {
-            const url = USER_EVENT_URL__GET+"/"+params["id"];
+            const url = USER_EVENT_BY_ID_URL__GET+"/"+params["id"];
             const data = await useApiGetAxios(url);
+            console.log(data);
             setAr(data)
             successToastGlobel()
         } catch (error) {
