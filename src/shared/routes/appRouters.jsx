@@ -18,8 +18,8 @@ import ManageEvents from '../components/user/events/manageEvents';
 import ManagePaticipants from '../components/user/events/managePaticipants';
 import FindByCat from '../components/api/meals/findByCat';
 import SingleMeal from '../components/api/meals/singleMeal';
-import Test from '../components/test';
 import Profile from '../components/user/profile';
+import Test from '../../test';
 // import SearchMapCanvas from '../components/api/map/searchMapCanvas';
 
 export default function AppRouters() {

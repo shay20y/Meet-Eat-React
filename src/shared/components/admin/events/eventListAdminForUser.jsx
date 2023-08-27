@@ -17,6 +17,7 @@ export default function EeventListAdminForUser() {
         try {
             const url = USER_EVENT_URL_ADMIN_GET+"/"+params["id"];
             const data = await useApiGetAxios(url);
+            console.log(data);
             setAr(data)
             successToastGlobel()
         } catch (error) {

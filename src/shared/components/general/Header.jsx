@@ -13,12 +13,13 @@ import {
 
 export default function Header() {
   const nav = useNavigate();
-  const { userInfo, userSignOut } = useContext(UserContext);
+  const { userInfo, userSignOut , role  } = useContext(UserContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const id = userInfo.user_id + "";
 
 
   useEffect(() => {
+    console.log(role);
   }, [userInfo]);
 
   const onLogOut = () => {
@@ -59,13 +60,16 @@ export default function Header() {
               <li>
                 <Link to={`/findByCat`}>find recipe</Link>
               </li>
+              {role ==='admin'?<li>
+                <Link to={`/admin/users`}>admin site</Link>
+              </li>:<></>}
             </ul>
           </div>
 
           {localStorage[TOKEN_KEY] && userInfo != null ? (
             <div className="flex items-center">
               <Link to={'/profile'}>
-              <p className="p-2">{userInfo.name} </p>
+                <p className="p-2">{userInfo.name} </p>
               </Link>
               <div>
                 <NovuProvider subscriberId={id} applicationIdentifier={'gWNsf_ReNai_'}>
@@ -163,6 +167,15 @@ export default function Header() {
                   find recipe
                 </Link>
               </li>
+              {role ==='admin'?<li>
+                <Link
+                  to={`/admin/users`}
+                  onClick={handleMenuToggle}
+                  className="block px-4 py-2 hover:text-gray-900"
+                >
+                  admin site
+                </Link>
+              </li>:<></>}
             </ul>
           </div>
         )}

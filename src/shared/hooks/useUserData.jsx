@@ -4,20 +4,23 @@ import { useApiHooks } from './useApiHooks';
 
 export default function useUserInfo() {
     const [userInfo, setUserInfo] = useState({});
+    const [role , setRole] = useState("");
     const { useApiGetFetch } = useApiHooks();
 
     useEffect(() => {
         checkToken();
     }, []);
-
+    
     const checkToken = async () => {
         const token = localStorage.getItem(TOKEN_KEY);
         if (token) {
             try {
                 const url = USER_CHACK_TOKEN_URL__GET;
                 const data = await useApiGetFetch(url);
+                console.log(data);
                 if (data != null) {
                     doApiUser();
+                    setRole(data.role)
                 }
             }
             catch {
@@ -53,6 +56,7 @@ export default function useUserInfo() {
     };
 
     const userSignOut = () => {
+        setRole("")
         setUserInfo({});
         localStorage.removeItem[TOKEN_KEY]
         localStorage.removeItem[USER_INFO_KEY]
@@ -60,6 +64,8 @@ export default function useUserInfo() {
 
     return {
         userInfo,
+        role,
+        setRole,
         doApiUser,
         userSignOut,
         checkToken,
