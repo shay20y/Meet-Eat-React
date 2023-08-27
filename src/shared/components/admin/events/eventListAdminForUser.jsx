@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useApiHooks } from '../../../hooks/useApiHooks';
-import { EVENT_DELETE_URL__DELETE, USER_EVENT_URL__GET } from '../../../constant/constant';
+import { EVENT_DELETE_URL__DELETE, USER_EVENT_URL__GET,USER_EVENT_URL_ADMIN_GET } from '../../../constant/constant';
 import { errorToastGlobel, successToastGlobel } from '../../../utils/toastMes';
 
 export default function EeventListAdminForUser() {
@@ -15,7 +15,7 @@ export default function EeventListAdminForUser() {
 
     const doApi = async () => {
         try {
-            const url = USER_EVENT_URL__GET+"/"+params["id"];
+            const url = USER_EVENT_URL_ADMIN_GET+"/"+params["id"];
             const data = await useApiGetAxios(url);
             setAr(data)
             successToastGlobel()
@@ -84,7 +84,7 @@ export default function EeventListAdminForUser() {
                             <td className="px-6 py-4 ">
                             <button onClick={()=>{
                                 deleteItem(item.event_id)
-                            }}  className='bg-red-500 hover:bg-main   font-bold py-1 px-2 rounded'><i className="fa fa-trash-o" aria-hidden="true"></i>
+                            }}  className='hover:bg-red-500 bg-main   font-bold py-1 px-2 rounded'><i className="fa fa-trash-o" aria-hidden="true"></i>
                                     </button>
                             </td>
                         </tr>

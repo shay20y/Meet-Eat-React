@@ -76,11 +76,11 @@ export default function Signup() {
                         )}
                     </div>
                     <div className="flex items-center justify-between">
-                        <button className="bg-main hover:bg-btn-hover  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        <button className="bg-secondary hover:bg-btn-hover text-t-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                             Sign Up
                         </button>
                     </div>
-                    <Link className="block mt-4 text-blue-500 hover:underline lowercase" to="/login">I already have an account</Link>
+                    <Link className="block mt-4 text-secondary hover:text-main hover:underline lowercase" to="/login">I already have an account</Link>
                 </form>
             </div>
         </div>

@@ -88,7 +88,7 @@ export default function ManagePaticipants() {
                                                         <h3 className="text-green-500 font-semibold">Join successfully</h3>
                                                     ) : (
                                                         <button
-                                                            className="bg-blue-500 hover:bg-main  font-semibold py-2 px-4 rounded"
+                                                            className="bg-secondary hover:bg-btn-hover text-t-white font-semibold py-2 px-4 rounded"
                                                             onClick={() => {
                                                                 doApiApproval(params['id'], item.user_id);
                                                             }}
@@ -107,7 +107,7 @@ export default function ManagePaticipants() {
                             <p>No events found</p>
                         )}
                     </div>
-                    <button onClick={() => { nav(-1) }} className="bg-secondary hover:bg-btn-hover  font-bold py-2 px-4 rounded mt-5">
+                    <button onClick={() => { nav(-1) }} className="bg-secondary hover:bg-btn-hover text-t-white font-bold py-2 px-4 rounded mt-5">
                         go back
                     </button>
                 </div>

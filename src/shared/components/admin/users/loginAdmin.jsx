@@ -32,8 +32,8 @@ export default function LoginAdmin() {
     }
 
     return (
-        <div className='container'>
-            <h1 className='display-4 text-center'>Login to admin</h1>
+        <div className='container '>
+            <h1 className='display-4  text-4xl mb-4'>Login to admin</h1>
             <form className="bg-t-white max-w-lg shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit(onSubForm)}>
                 <div className="mb-4">
                     <label className="block  text-sm font-bold mb-2">
@@ -50,7 +50,7 @@ export default function LoginAdmin() {
                     {errors.password && <div className="text-danger">* Enter valid password (min 3 chars)</div>}
                 </div>
                 <div className="flex items-center justify-between">
-                    <button className="bg-blue-500 hover:bg-main  font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    <button className="bg-secondary hover:bg-btn-hover text-t-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Sign In
                     </button>
                 </div>

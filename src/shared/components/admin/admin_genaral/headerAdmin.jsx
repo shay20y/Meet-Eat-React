@@ -25,7 +25,7 @@ export default function Header() {
   };
 
   return (
-    <header>
+    <header className='mb-5 text-t-white'>
       <div className="mx-auto px-4 py-6 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -35,7 +35,7 @@ export default function Header() {
               </Link>
             </div>
 
-            <ul className="hidden sm:flex space-x-4">
+            <ul className="hidden sm:flex space-x-4 font-semibold">
               <li>
                 <Link to={`/admin/users`}>Users list</Link>
               </li>
@@ -53,7 +53,7 @@ export default function Header() {
               <p className="p-2">{userInfo.name} </p>
               <button
                 onClick={onLogOut}
-                className="ml-4 px-4 py-2 text-t-white  bg-main rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                className="ml-4 px-4 py-2 text-t-white  bg-secondary rounded-lg hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-blue-300"
               >
                 Log out
               </button>
@@ -63,13 +63,13 @@ export default function Header() {
               <div className="log_in ">
                 <Link
                   to="/login"
-                  className="mr-4 px-4 py-2  bg-main rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                  className="mr-4 px-4 py-2  bg-secondary rounded-lg hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-blue-300"
                 >
                   Log in
                 </Link>
                 <Link
                   to="/signup"
-                  className="px-4 py-2  bg-main rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                  className="px-4 py-2  bg-secondary rounded-lg hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-blue-300"
                 >
                   Sign up
                 </Link>
