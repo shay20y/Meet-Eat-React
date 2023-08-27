@@ -11,7 +11,11 @@ import { errorToast, errorToastGlobel } from '../../../utils/toastMes';
 export default function ManageEvents() {
     const [arAll, setArAll] = useState([]);
     const [arMange, setArMange] = useState([]);
-    const [role, setRole] = useState("");
+
+
+    const [flag, setflag] = useState(false)
+
+  const [role, setRole] = useState("");
     const { useApiGetAxios, useApiMethodAxios } = useApiHooks();
     const { userInfo } = useContext(UserContext);
 
@@ -41,7 +45,10 @@ export default function ManageEvents() {
             setArAll(data);
         } catch (error) {
             console.log(error);
-            errorToastGlobel();
+            if (flag === false) {
+            } else {
+                errorToastGlobel();
+            }
         }
     };
 
@@ -52,7 +59,11 @@ export default function ManageEvents() {
             setArMange(data);
         } catch (error) {
             console.log(error);
-            errorToastGlobel();
+            if (flag === false) {
+                errorToast("Please log in or sign up to the system in order to perform this action")
+            } else {
+                errorToastGlobel();
+            }
         }
     };
 
@@ -72,16 +83,17 @@ export default function ManageEvents() {
 
     return (
         <>
-            <ChackUserLogin />
+            <ChackUserLogin setFlag={setflag} flag={flag} />
             <Accordion className=''>
-                <AccordionItem className={'bg-secondary text-t-white  text-center m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 '}
+                <AccordionItem className={'bg-secondary text-t-white  text-center m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:'}
 
                     header={({ state }) => `${state.isEnter ? "⮝" : "⮟"} All of my events ${state.isEnter ? "⮝" : "⮟"}`}
                 >
                     <EventsGlobelList arr={arAll} />
                 </AccordionItem>
 
-                <AccordionItem className={'bg-secondary text-center text-t-white  m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 '} header={({ state }) => `${state.isEnter ? "⮝" : "⮟"}  Mange your events ${state.isEnter ? "⮝" : "⮟"}`}>
+                <AccordionItem className={'bg-secondary text-center text-t-white  m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:'} header={({ state }) => `${state.isEnter ? "⮝" : "⮟"}  Mange your events ${state.isEnter ? "⮝" : "⮟"}`}>
+
                     <div className="relative overflow-x-auto  sm:rounded-lg py-7">
                         <div className="w-full overflow-hidden">
                             <div className="w-full overflow-x-auto">
