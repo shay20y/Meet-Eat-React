@@ -43,7 +43,7 @@ export default function Header() {
                 <Link to={`/admin/events`}>Event list</Link>
               </li>
               <li>
-                <Link to={`/`}>Go Back</Link>
+                <Link className='text-t-black font-bold' to={`/`}>Go Back</Link>
               </li>
             </ul>
           </div>
@@ -121,6 +121,9 @@ export default function Header() {
                 >
                   Event list
                 </Link>
+              </li>
+              <li>
+                <Link  onClick={handleMenuToggle} className="block px-4 py-2 hover:text-gray-900" to={`/`}>Go Back</Link>              
               </li>
             </ul>
           </div>

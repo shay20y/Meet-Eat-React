@@ -61,7 +61,7 @@ export default function Header() {
                 <Link to={`/findByCat`}>find recipe</Link>
               </li>
               {role ==='admin'?<li>
-                <Link to={`/admin/users`}>admin site</Link>
+                <Link className='text-t-black font-bold' to={`/admin/users`}>admin site</Link>
               </li>:<></>}
             </ul>
           </div>
