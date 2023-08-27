@@ -94,7 +94,7 @@ export default function CreateEvent() {
             </div>
           </div>
 
-          <button className=" px-4 py-2 rounded bg-secondary hover:bg-btn-hover">Add new</button>
+          <button className=" px-4 py-2 rounded bg-secondary hover:bg-btn-hover text-t-white">Add new</button>
         </form>
       </div>
     </>

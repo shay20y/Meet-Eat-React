@@ -50,7 +50,7 @@ export default function Event() {
           <Link
             to={`/JoinToEvent/${item.event_id}`}
             href="#"
-            className="inline-block mt-4 px-4 py-2 text-sm font-medium text-center rounded-lg bg-secondary hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-blue-300"
+            className="inline-block mt-4 px-4 py-2 text-sm font-medium text-center rounded-lg bg-secondary hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-blue-300 text-t-white"
           >
             Join
           </Link>

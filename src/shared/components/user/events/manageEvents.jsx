@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useApiHooks } from '../../../hooks/useApiHooks';
 import { UserContext } from '../../../context/userContext';
 import { useNavigate } from 'react-router-dom';
-import { EVENT_DELETE_URL__DELETE, USER_EVENT_URL__GET } from '../../../constant/constant';
+import { EVENT_DELETE_URL__DELETE, USER_EVENT_URL__GET , USER_CHACK_TOKEN_URL__GET} from '../../../constant/constant';
 import ChackUserLogin from '../../../utils/chackUserLogin';
 import { Accordion, AccordionItem } from '@szhsin/react-accordion';
 import EventsGlobelList from './eventsGlobelList';
@@ -12,8 +12,10 @@ export default function ManageEvents() {
     const [arAll, setArAll] = useState([]);
     const [arMange, setArMange] = useState([]);
 
+
     const [flag, setflag] = useState(false)
 
+  const [role, setRole] = useState("");
     const { useApiGetAxios, useApiMethodAxios } = useApiHooks();
     const { userInfo } = useContext(UserContext);
 
@@ -22,9 +24,19 @@ export default function ManageEvents() {
     useEffect(() => {
         doApiAll();
         doApiMange();
+        getRole();
     }, [userInfo]);
 
-
+    const getRole = async () =>{
+        try {
+            const url = `${USER_CHACK_TOKEN_URL__GET}`;
+            const data = await useApiGetAxios(url);
+            setRole(data?.role);
+        } catch (error) {
+            console.log(error);
+            errorToastGlobel();
+        }
+    }
 
     const doApiAll = async () => {
         try {
@@ -81,6 +93,7 @@ export default function ManageEvents() {
                 </AccordionItem>
 
                 <AccordionItem className={'bg-secondary text-center text-t-white  m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:'} header={({ state }) => `${state.isEnter ? "⮝" : "⮟"}  Mange your events ${state.isEnter ? "⮝" : "⮟"}`}>
+
                     <div className="relative overflow-x-auto  sm:rounded-lg py-7">
                         <div className="w-full overflow-hidden">
                             <div className="w-full overflow-x-auto">
@@ -153,7 +166,7 @@ export default function ManageEvents() {
                                                                 onClick={() => {
                                                                     nav('/ManagePaticipants/' + item.event_id);
                                                                 }}
-                                                                className="bg-main hover:bg-btn-hover  font-bold py-1 px-2 rounded"
+                                                                className="bg-main hover:bg-btn-hover font-bold py-1 px-2 rounded"
                                                             >
                                                                 <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                             </button>
@@ -164,7 +177,7 @@ export default function ManageEvents() {
                                                                 onClick={() => {
                                                                     if (window.confirm(`Delete ${item.title}?`)) { deleteItem(item.event_id); }
                                                                 }}
-                                                                className="bg-orange-500 hover:bg-red-500  font-bold p-2 rounded"
+                                                                className="bg-orange-500 hover:bg-red-500 font-bold p-2 rounded"
                                                             >
                                                                 <i className="fa fa-trash-o" aria-hidden="true"></i>
                                                             </button>
@@ -174,7 +187,7 @@ export default function ManageEvents() {
                                                                 onClick={() => {
                                                                     nav('/myEvent/edit/' + item.event_id);
                                                                 }}
-                                                                className="bg-main hover:bg-btn-hover  font-bold p-2 rounded"
+                                                                className="bg-main hover:bg-btn-hover font-bold p-2 rounded"
                                                             >
                                                                 <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                             </button>
@@ -191,12 +204,14 @@ export default function ManageEvents() {
                         </div>
                     </div>
                 </AccordionItem>
-
-                <AccordionItem className={''} header="Why do we use it?">
-                    Suspendisse massa risus, pretium id interdum in, dictum sit amet
-                    ante. Fusce vulputate purus sed tempus feugiat.
-                </AccordionItem>
+                {/* <AccordionItem className={''} header="Why do we use it?"> 
+                </AccordionItem> blank Accordion Item for referance */}
             </Accordion>
+                {role == "admin"?
+                <button onClick={() => nav(`/admin/users`)} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center  rounded-lg  hover:bg-btn-hover bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 text-t-white">
+                Move to Admin 
+              </button>
+               :<></>}
         </>
     );
 }

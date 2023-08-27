@@ -31,19 +31,19 @@ export default function SingleMeal() {
             <div className="detils-card flex flex-col-reverse md:flex-row text-black" >
 
                 <div className=" md:mr-4 items-center flex flex-col">
-                    <h2 className="text-3xl font-bold mb-2 text-center font-size border-b-2 border-blue-500">{ar.strMeal}</h2>
+                    <h2 className="text-3xl font-bold mb-2 text-center font-size border-b-2 border-main">{ar.strMeal}</h2>
                     {ar.strArea == "Unknown" || <p className="text-center text-xl mb-3">{ar.strArea}</p>}
                     <img width={"80%"} src={ar.strMealThumb} alt={ar.strMeal} className="rounded-lg" />
                     <div>
                         {ar.strSource != null ?
-                            <button onClick={() => { window.open(ar.strSource, "_blank") }} className="bg-secondary hover:bg-btn-hover  font-bold py-2 px-4 rounded">
+                            <button onClick={() => { window.open(ar.strSource, "_blank") }} className="bg-secondary hover:bg-btn-hover  text-t-white font-bold py-2 px-4 rounded">
                                 View Recipe
                             </button>
                             :
                             <></>
                         }
                         &nbsp;
-                        <button onClick={() => { nav(-1) }} className="bg-main hover:bg-btn-hover  font-bold py-2 px-4 rounded mt-5">
+                        <button onClick={() => { nav(-1) }} className="bg-main hover:bg-btn-hover  text-t-white font-bold py-2 px-4 rounded mt-5">
                             go back
                         </button>
                     </div>

@@ -51,6 +51,6 @@ header {
     z-index: -0.9;
 }
 
-.accordionItem .szh-accordion__item-btn {
+.szh-accordion__item-heading .szh-accordion__item-btn {
     width: 100%;
 }

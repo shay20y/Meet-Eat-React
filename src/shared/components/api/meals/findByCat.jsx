@@ -115,7 +115,7 @@ export default function FindByCat() {
     <div className='my-8'>
       <div className="bg-main mb-4 border-b-2 border-t-black">
         <>
-          <p className='text-2xl text-center p-3'>
+          <p className='text-2xl text-center p-3 text-t-white'>
             Welcome to Recipe Finder! you can search by area , categories or even by name
           </p>
         </>
@@ -130,14 +130,14 @@ export default function FindByCat() {
                   type='text'
                   id='title'
                 />
-                <button className=' border border-gray-300  text-sm rounded-lg block  p-2.5 bg-secondary hover:bg-btn-hover'>
+                <button className=' border border-gray-300 rounded-lg block text-t-white p-2.5 bg-secondary hover:bg-btn-hover'>
                   search
                 </button>
               </form>
             </div>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
               <div>
-                <label for="first_name" className="block mb-2 text-sm font-medium ">Find by area</label>
+                <label for="first_name" className="block mb-2  text-t-white font-medium ">Find by area</label>
                 <select
                   id='area'
                   onChange={(event) => doApiG(event.target.value, 1)}
@@ -153,7 +153,7 @@ export default function FindByCat() {
                 </select>
               </div>
               <div>
-                <label for="last_name" className="block mb-2 text-sm font-medium ">Find by categories</label>
+                <label for="last_name" className="block mb-2  text-t-white font-medium ">Find by categories</label>
                 <select
                   id='categories'
                   onChange={(event) => doApiG(event.target.value, 0)}
@@ -170,7 +170,7 @@ export default function FindByCat() {
             </div>
           </div>
         </div>
-        <p className='text-2xl text-center p-3'>
+        <p className='text-2xl  text-t-white text-center p-3'>
           or you can try our recipe dictonery
         </p>
         <AbcBtns doApiG={doApiG} />
