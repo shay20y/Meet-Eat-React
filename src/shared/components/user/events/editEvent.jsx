@@ -66,7 +66,7 @@ export default function EditEvent() {
 
   return (
     <div className='container'>
-      <h1 className="text-2xl font-bold my-4">Edit Your Event</h1>
+      <h1 className="text-2xl font-bold my-4 text-center text-t-black">Edit Your Event</h1>
       {item.title ?
         <form onSubmit={handleSubmit(onSubForm)} className="max-w-md mx-auto">
           <div className="mb-4">
@@ -115,7 +115,7 @@ export default function EditEvent() {
           
           </div>
 
-          <button className="bg-secondary  px-4 py-2 rounded hover:bg-btn-hover">Update</button>
+          <button className="bg-secondary  px-4 py-2 rounded hover:bg-btn-hover text-t-white">Update</button>
         </form> : <h2>Loading...</h2>}
     </div>
   )

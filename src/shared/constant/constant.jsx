@@ -29,7 +29,7 @@ export const EVENT_PATICIPANTS__GET = `${API_URL}/events/users/count`;
 export const EVENT_JOIN__POST = `${API_URL}/events/joinEvent`;
 
 export const USER_EVENT_URL__GET = `${API_URL}/events/users/getAllMyEvents`;
-export const USER_EVENT_BY_ID_URL__GET = `${API_URL}/events/users/getUserEvents`;
+export const USER_EVENT_URL_ADMIN_GET = `${API_URL}/events/users/getUserEvents`;
 export const USER_EVENT_PARTICIPANTS_URL__GET = `${API_URL}/events/users/getParticipants`;
 
 // Api url

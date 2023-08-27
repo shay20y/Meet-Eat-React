@@ -73,7 +73,7 @@ export default function Header() {
               </Link>
               <div>
                 <NovuProvider subscriberId={id} applicationIdentifier={'gWNsf_ReNai_'}>
-                  <PopoverNotificationCenter onNotificationClick={onNotificationClick} colorScheme={'dark'}>
+                  <PopoverNotificationCenter onNotificationClick={onNotificationClick} colorScheme={'light'}>
                     {({ unseenCount }) => <NotificationBell unseenCount={unseenCount} />}
                   </PopoverNotificationCenter>
                 </NovuProvider>
@@ -90,7 +90,7 @@ export default function Header() {
               <div className="log_in ">
                 <Link
                   to="/login"
-                  className="mr-4 px-4 py-2  bg-secondary hover:bg-btn-hover rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"
+                  className="mr-4 px-4 py-2 bg-secondary hover:bg-btn-hover rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"
                 >
                   Log in
                 </Link>
