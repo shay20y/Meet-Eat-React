@@ -23,6 +23,7 @@ export default function UserList() {
     const page = query.get('page') || 1;
     try {
       const data = await useApiGetFetch(USER_URL__GET_POST);
+      console.log(data);
       setAr(data);
     } catch (error) {
       console.log(error);

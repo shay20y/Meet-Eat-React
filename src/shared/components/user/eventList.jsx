@@ -11,7 +11,7 @@ export default function EventList() {
   const [ar, setAr] = useState([]);
   const { userInfo } = useContext(UserContext);
 
-  const { useSetConvertEventDateR } = useDate()
+  const { useSetConvertEventDateR } = useDate();
 
   const nav = useNavigate();
 
@@ -22,7 +22,9 @@ export default function EventList() {
   const doApi = async () => {
     try {
       try {
-        const url = localStorage["user_id"] ? EVENT_URL__GET_POST_logged + "/" + localStorage["user_id"] + '?date=1' : EVENT_URL__GET_POST  + '?date=1';
+        const url = localStorage["user_id"]
+          ? EVENT_URL__GET_POST_logged + "/" + localStorage["user_id"] + '?date=1'
+          : EVENT_URL__GET_POST + '?date=1';
         const data = await useApiGetAxios(url);
         console.log(data);
         if (data.fatal === true) {
@@ -39,37 +41,37 @@ export default function EventList() {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-4 text
-     sm:grid-cols-2 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
       {ar.map((item, i) => {
         return (
           <div
             key={item.event_id}
-            className="p-3 bg-t-white border rounded-lg text-t-black shadow  flex flex-col justify-between"
+            className="p-3 bg-t-white border rounded-lg text-t-black shadow flex flex-col justify-between"
           >
             <div>
               <div className="flex justify-between items-center">
-                <h5 className="mb-3 text-2xl font-bold tracking-tight">
+                <h5 className="mb-3 text-xl sm:text-2xl font-bold tracking-tight">
                   {item.title}
                 </h5>
-                <div>
-                  {useSetConvertEventDateR(item.event_date)}
-                </div>
+                <div>{useSetConvertEventDateR(item.event_date)}</div>
               </div>
-              <div className="w-auto justify-center items-center ">
-                <h5 className="mb-2 text-1xl font-bold tracking-tight ">
+              <div className="w-auto justify-center items-center">
+                <h5 className="mb-2 text-base sm:text-lg font-bold tracking-tight text-center">
                   {item.city}
                 </h5>
-                <h5 className="mb-2 text-1xl font-bold tracking-tight  text-center"></h5>
+                {/* Additional content for the text can be added here */}
               </div>
-              <p className="mb-3 font-normal   overflow-hidden text-ellipsis">
+              <p className="mb-3 font-normal text-sm sm:text-base overflow-hidden truncate">
                 {item.description}
               </p>
             </div>
-            <div className="flex justify-end">
+            <div className="flex flex-col sm:flex-row justify-between items-center">
+              <div className="mb-2 sm:mb-0 font-bold">
+                {item.current_particepants - 1}/{item.max_paticipants} participants
+              </div>
               <button
-                onClick={() => nav(`/event/${item.event_id}`)}  
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center  rounded-lg  hover:bg-btn-hover bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 text-t-white"
+                onClick={() => nav(`/event/${item.event_id}`)}
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center rounded-lg hover:bg-btn-hover bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 text-t-white"
               >
                 Read more
               </button>
@@ -78,5 +80,5 @@ export default function EventList() {
         );
       })}
     </div>
-  )
+  );
 }

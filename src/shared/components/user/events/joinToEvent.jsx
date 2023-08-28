@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useApiHooks } from '../../../hooks/useApiHooks';
 import useUserInfo from '../../../hooks/useUserData';
 import { EVENT_JOIN__POST } from '../../../constant/constant';
-import { errorToast, successToastGlobel } from '../../../utils/toastMes';
+import { errorToast, successToastGlobel, warnToass } from '../../../utils/toastMes';
 
 export default function JoinToEvent() {
     const { useApiMethodAxios } = useApiHooks();
@@ -22,6 +22,7 @@ export default function JoinToEvent() {
         console.log(url);
         try {
             const data = await useApiMethodAxios(url, 'POST');
+            console.log('data', data)
             if (data.fieldCount != null) {
                 setSended(true);
                 successToastGlobel();
@@ -29,6 +30,8 @@ export default function JoinToEvent() {
             }
         } catch (error) {
             console.log(error);
+            warnToass("To join an event, it is necessary to be logged in.");
+            nav('/login');
         }
     };
 

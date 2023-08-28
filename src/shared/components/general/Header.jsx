@@ -44,7 +44,7 @@ export default function Header() {
           <div className="flex items-center">
             <div className="logo">
               <Link to="/">
-                <img className="w-24" src="/public/img/logos/(1).png" alt="" />
+                <img className="w-24" src="https://res.cloudinary.com/dmjirwkmq/image/upload/v1693227321/1_bdpsja.png" alt="" />
               </Link>
             </div>
             <ul className="hidden sm:flex space-x-4 font-semibold">

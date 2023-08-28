@@ -7,7 +7,6 @@ import { useDate } from '../shared/hooks/useDate';
 
 export default function Event() {
   const [item, setItem] = useState({});
-  const [p, setP] = useState({});
   const { useApiGetAxios } = useApiHooks();
   const params = useParams();
 
@@ -15,29 +14,21 @@ export default function Event() {
 
   useEffect(() => {
     doApi();
-    doApiContP();
+
   }, [params]);
 
   const doApi = async () => {
     try {
       const url = EVENT_SINGLE_URL__GET + '/' + params["id"];
       const data = await useApiGetAxios(url);
-      console.log(data);
       setItem(data[0]);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const doApiContP = async () => {
-    try {
-      const url = EVENT_PATICIPANTS__GET + '/' + item.event_id;
-      const data = await useApiGetAxios(url);
-      setP(data[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
+
 
   return (
     <div className="container mx-auto py-8">
@@ -49,10 +40,10 @@ export default function Event() {
               <p className="">{item.city}</p>
             </div>
             <div>
-             Event Date
-            <h5 className="text-xl font-bold ">
-              {useSetConvertEventDateR(item.event_date)}
-            </h5>
+              Event Date
+              <h5 className="text-xl font-bold ">
+                {useSetConvertEventDateR(item.event_date)}
+              </h5>
             </div>
           </div>
           <p className="mt-4">{item.description}</p>
