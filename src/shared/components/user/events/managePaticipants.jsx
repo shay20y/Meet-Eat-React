@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useApiHooks } from '../../../hooks/useApiHooks';
-import { useNavigate, useParams,useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams,useSearchParams,Link } from 'react-router-dom';
 import ChackUserLogin from '../../../utils/chackUserLogin';
 import { EVENT_USERS_APPROVE_URL__PATCH, USER_EVENT_PARTICIPANTS_URL__GET } from '../../../constant/constant';
 import { UserContext } from '../../../context/userContext';
@@ -26,7 +26,6 @@ export default function ManagePaticipants() {
             const host = query.get("host")?"?host=1":"";
             const url = USER_EVENT_PARTICIPANTS_URL__GET + '/' + params['id']+host;
             const data = await useApiGetAxios(url);
-            ;
             setAr(data);
         } catch (error) {
             console.log(error);
@@ -72,6 +71,9 @@ export default function ManagePaticipants() {
                                         <th scope="col" className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
                                             approved
                                         </th>
+                                        <th scope="col" className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6">
+                                            contact
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,7 +99,7 @@ export default function ManagePaticipants() {
                                                         </button>
                                                     )}
                                                 </td>
-
+                                                <td className="px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 lg:px-10 lg:py-6"><Link className='text-t-black font-bold' to={`/test?id=`+item.user_id}>Go talk</Link></td>
                                             </tr>
                                         );
                                     })}
