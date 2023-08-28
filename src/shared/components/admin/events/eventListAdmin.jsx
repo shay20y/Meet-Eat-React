@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { EVENT_DELETE_URL__DELETE, EVENT_URL__GET_POST } from '../../../constant/constant';
 import { errorToastGlobel, successToastGlobel } from '../../../utils/toastMes';
 import AuthAdminComp from '../users/authAdminComp';
+import { useApiHooks } from '../../../hooks/useApiHooks';
 
 
 
 export default function EventListAdmin() {
     const [ar, setAr] = useState([])
+    const {useApiGetAxios,useApiMethodAxios} = useApiHooks()
 
     useEffect(() => {
         doApi();
@@ -14,8 +16,7 @@ export default function EventListAdmin() {
 
     const doApi = async () => {
         try {
-            const resp = await fetch(EVENT_URL__GET_POST)
-            const data = await resp.json()
+            const data = await useApiGetAxios(EVENT_URL__GET_POST)
             setAr(data)
             successToastGlobel()
         } catch (error) {
@@ -26,8 +27,10 @@ export default function EventListAdmin() {
 
     const deleteItem = async (_delId) => {
         try {
-            const data = await doApiMethod(EVENT_DELETE_URL__DELETE, "DELETE");
-            if (data.deletedCount) {
+            const url = EVENT_DELETE_URL__DELETE +'/'+_delId
+            const data = await useApiMethodAxios(url, "DELETE");
+            console.log(data);
+            if (data.fieldCount !=null) {
                 successToastGlobel()
                 doApi();
             }

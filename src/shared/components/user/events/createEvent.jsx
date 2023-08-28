@@ -23,6 +23,7 @@ export default function CreateEvent() {
     if (userInfo == null) {
       nav('/login');
     }
+    console.log(defaultDate);
     // deDate();
     useSetDefaultData(setDefaultDate);
   }, [userInfo]);
@@ -83,7 +84,9 @@ export default function CreateEvent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="mb-4">
               <label for="max_paticipants" className="block mb-2">Max Participants</label>
-              <input {...register("max_paticipants", { required: true, min: 1 })} className="w-full p-2 border border-gray-300 rounded" type="number" id="max_paticipants" />
+              <input {...register("max_paticipants", { required: true, min: 1 })} className="w-full p-2 border border-gray-300 rounded" type="number" id="max_paticipants"
+              max={50}
+              />
               {errors.max_paticipants && <div className="text-red-500 mt-1">* Enter a valid max participants</div>}
             </div>
 

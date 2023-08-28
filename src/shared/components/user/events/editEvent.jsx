@@ -66,9 +66,9 @@ export default function EditEvent() {
 
   return (
     <div className='container'>
-      <h1 className="text-2xl font-bold my-4 text-center text-t-black">Edit Your Event</h1>
       {item.title ?
-        <form onSubmit={handleSubmit(onSubForm)} className="max-w-md mx-auto">
+        <form onSubmit={handleSubmit(onSubForm)} className="max-w-md mx-auto p-6 bg-t-white">
+          <h1 className="text-2xl font-bold my-4 text-center text-t-black">Edit Your Event</h1>
           <div className="mb-4">
             <label for="title" className="block mb-2">Title</label>
             <input defaultValue={item.title} {...register("title", { required: true, minLength: 2 })} className="w-full p-2 border border-gray-300 rounded" type="text" id="title" />

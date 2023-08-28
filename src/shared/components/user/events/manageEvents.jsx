@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useApiHooks } from '../../../hooks/useApiHooks';
 import { UserContext } from '../../../context/userContext';
 import { useNavigate } from 'react-router-dom';
-import { EVENT_DELETE_URL__DELETE, USER_EVENT_URL__GET , USER_CHACK_TOKEN_URL__GET} from '../../../constant/constant';
+import { EVENT_DELETE_URL__DELETE, USER_EVENT_URL__GET, USER_CHACK_TOKEN_URL__GET } from '../../../constant/constant';
 import ChackUserLogin from '../../../utils/chackUserLogin';
 import { Accordion, AccordionItem } from '@szhsin/react-accordion';
 import EventsGlobelList from './eventsGlobelList';
@@ -15,7 +15,7 @@ export default function ManageEvents() {
 
     const [flag, setflag] = useState(false)
 
-  const [role, setRole] = useState("");
+    const [role, setRole] = useState("");
     const { useApiGetAxios, useApiMethodAxios } = useApiHooks();
     const { userInfo } = useContext(UserContext);
 
@@ -27,7 +27,7 @@ export default function ManageEvents() {
         getRole();
     }, [userInfo]);
 
-    const getRole = async () =>{
+    const getRole = async () => {
         try {
             const url = `${USER_CHACK_TOKEN_URL__GET}`;
             const data = await useApiGetAxios(url);
@@ -86,9 +86,7 @@ export default function ManageEvents() {
             <ChackUserLogin setFlag={setflag} flag={flag} />
             <Accordion className=''>
                 <AccordionItem className={'bg-secondary text-t-white  text-center m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:'}
-
-                    header={({ state }) => `${state.isEnter ? "⮝" : "⮟"} All of my events ${state.isEnter ? "⮝" : "⮟"}`}
-                >
+                    header={({ state }) => `${state.isEnter ? "⮝" : "⮟"} All of my events ${state.isEnter ? "⮝" : "⮟"}`}>
                     <EventsGlobelList arr={arAll} />
                 </AccordionItem>
 
@@ -207,11 +205,11 @@ export default function ManageEvents() {
                 {/* <AccordionItem className={''} header="Why do we use it?"> 
                 </AccordionItem> blank Accordion Item for referance */}
             </Accordion>
-                {role == "admin"?
+            {role == "admin" ?
                 <button onClick={() => nav(`/admin/users`)} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center  rounded-lg  hover:bg-btn-hover bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 text-t-white">
-                Move to Admin 
-              </button>
-               :<></>}
+                    Move to Admin
+                </button>
+                : <></>}
         </>
     );
 }

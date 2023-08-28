@@ -1,14 +1,17 @@
-import React, { useEffect, useState ,useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { EVENT_URL__GET_POST, EVENT_URL__GET_POST_logged} from '../../constant/constant';
+import { EVENT_URL__GET_POST, EVENT_URL__GET_POST_logged } from '../../constant/constant';
 import { useApiHooks } from '../../hooks/useApiHooks';
 import { errorToastGlobel } from '../../utils/toastMes';
 import { UserContext } from '../../context/userContext';
+import { useDate } from '../../hooks/useDate';
 
 export default function EventList() {
   const { useApiGetAxios } = useApiHooks();
   const [ar, setAr] = useState([]);
-  const { userInfo, userSignOut } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
+
+  const { useSetConvertEventDateR } = useDate()
 
   const nav = useNavigate();
 
@@ -19,8 +22,9 @@ export default function EventList() {
   const doApi = async () => {
     try {
       try {
-        const url = localStorage["user_id"]?EVENT_URL__GET_POST_logged+"/"+localStorage["user_id"]:EVENT_URL__GET_POST;
+        const url = localStorage["user_id"] ? EVENT_URL__GET_POST_logged + "/" + localStorage["user_id"] + '?date=1' : EVENT_URL__GET_POST  + '?date=1';
         const data = await useApiGetAxios(url);
+        console.log(data);
         if (data.fatal === true) {
           return;
         }
@@ -44,9 +48,14 @@ export default function EventList() {
             className="p-3 bg-t-white border rounded-lg text-t-black shadow  flex flex-col justify-between"
           >
             <div>
-              <h5 className="mb-3 my text-2xl font-bold tracking-tight ">
-                {item.title}
-              </h5>
+              <div className="flex justify-between items-center">
+                <h5 className="mb-3 text-2xl font-bold tracking-tight">
+                  {item.title}
+                </h5>
+                <div>
+                  {useSetConvertEventDateR(item.event_date)}
+                </div>
+              </div>
               <div className="w-auto justify-center items-center ">
                 <h5 className="mb-2 text-1xl font-bold tracking-tight ">
                   {item.city}
@@ -59,7 +68,7 @@ export default function EventList() {
             </div>
             <div className="flex justify-end">
               <button
-                onClick={() => nav(`/event/${item.event_id}`)} // Call handleReadMore with the event_id
+                onClick={() => nav(`/event/${item.event_id}`)}  
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center  rounded-lg  hover:bg-btn-hover bg-secondary focus:ring-4 focus:outline-none focus:ring-blue-300 text-t-white"
               >
                 Read more
