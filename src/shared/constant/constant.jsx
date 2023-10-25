@@ -5,6 +5,7 @@ const API_URL = 'http://localhost:3001';
 //Auth Routes
 
 // User Routes
+export const USER_URL_SAND_EMAIl__POST = `${API_URL}/users/sendMail`;
 export const USER_URL__GET_POST = `${API_URL}/users`;
 export const USER_URL__GET_POST_DELETE = `${API_URL}/users`;
 export const LOGIN_URL__POST = `${API_URL}/users/login`;

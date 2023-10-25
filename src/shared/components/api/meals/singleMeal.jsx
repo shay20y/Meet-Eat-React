@@ -5,15 +5,32 @@ import { useApiHooks } from '../../../hooks/useApiHooks';
 import { API_MEAL_BY_ID } from '../../../constant/constant';
 
 export default function SingleMeal() {
+    const [isHighResolution, setIsHighResolution] = useState(false);
+
     const params = useParams();
     const [ar, setAr] = useState([])
     const [str, setStr] = useState("")
 
     const nav = useNavigate();
 
+    
+
 
     useEffect(() => {
+
         doApi();
+
+
+        const handleResize = () => {
+            const resolutionThreshold = 1200; 
+            const isHighRes = window.innerWidth >= resolutionThreshold;
+            setIsHighResolution(isHighRes);
+          };
+          handleResize();
+          window.addEventListener('resize', handleResize);
+          return () => {
+            window.removeEventListener('resize', handleResize);
+          };
     }, [params])
 
     const doApi = async () => {
@@ -50,8 +67,9 @@ export default function SingleMeal() {
                 </div>
 
                 <div>
-                    <div className="text-center w-auto">
-                        <iframe width="784" height="441" src={str.replace("watch?v=", "embed/")} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                    
+                    <div className={isHighResolution?"":"aspect-w-16 aspect-h-9"}>
+                        <iframe width={isHighResolution?"784":"588"} height={isHighResolution?"441":"331"} src={str.replace("watch?v=", "embed/")} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                     </div>
                 </div>
             </div>
