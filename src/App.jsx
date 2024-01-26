@@ -12,8 +12,6 @@ function App() {
 const {doApiUser,userInfo,userSignOut ,checkToken , role , checkTokenAndReturn} = useUserData()
 
   return (
-
-    
     <UserContext.Provider value={{
       userInfo, role, 
       doApiUser , userSignOut , checkToken ,checkTokenAndReturn

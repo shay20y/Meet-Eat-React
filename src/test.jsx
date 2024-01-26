@@ -2,8 +2,8 @@ import React,{useState,useEffect} from 'react'
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate,useSearchParams } from 'react-router-dom';
 import { useApiHooks } from './shared/hooks/useApiHooks';
-import {  USER_URL__GET_POST } from './shared/constant/constant';
-import { successToast, errorToast } from './shared/utils/toastMes';
+import {  USER_URL_SAND_EMAIl__POST, USER_URL__GET_POST } from './shared/constant/constant';
+import { successToast, errorToast, errorToastGlobel } from './shared/utils/toastMes';
 import axios from 'axios';
 import ChackUserLogin from './shared/utils/chackUserLogin';
 
@@ -19,7 +19,7 @@ export default function Test() {
   }, []);
 
   const onSubForm = (_bodyData) => {
-    //console.log(_bodyData);
+    console.log(_bodyData);
     doApiPost(_bodyData);
   };
 
@@ -33,15 +33,16 @@ export default function Test() {
       setArEmail(data);
     }
     catch(err){
-      console.log(error);
+      console.log(err);
       errorToastGlobel();
     }
   }
 
   const doApiPost = async (_bodyData) => {
     try {
-      const data = await useApiMethodAxios('http://localhost:3001/users/sendMail', 'POST', _bodyData);
-      successToast("email sent")
+      const data = await useApiMethodAxios(USER_URL_SAND_EMAIl__POST, 'POST', _bodyData);
+      successToast(data)
+      nav('/')
     } catch (err) {
       console.log(err.response.data.code);
       errorToast('Email already in system please log in');

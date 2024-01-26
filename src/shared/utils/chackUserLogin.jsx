@@ -2,17 +2,15 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useApiHooks } from '../hooks/useApiHooks';
 import { USER_CHACK_TOKEN_URL__GET } from '../constant/constant';
+import { errorToast } from './toastMes';
 
-export default function ChackUserLogin(props) {
-    const setFlag = props.setFlag
-    const flag = props.flag
+export default function ChackUserLogin() {
     const { useApiGetAxios } = useApiHooks();
     const nav = useNavigate();
 
 
     useEffect(() => {
         getTokenData()
-        console.log(flag);
     }, [])
 
 
@@ -25,8 +23,8 @@ export default function ChackUserLogin(props) {
             }
         } catch (error) {
             nav("/login")
+            errorToast("Please log in or sign up to the system in order to perform this action")
             console.log(error);
-            setFlag(true)
         }
     }
 

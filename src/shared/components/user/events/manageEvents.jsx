@@ -34,7 +34,7 @@ export default function ManageEvents() {
             setRole(data?.role);
         } catch (error) {
             console.log(error);
-            errorToastGlobel();
+            // errorToastGlobel();
         }
     }
 
@@ -45,10 +45,6 @@ export default function ManageEvents() {
             setArAll(data);
         } catch (error) {
             console.log(error);
-            if (flag === false) {
-            } else {
-                errorToastGlobel();
-            }
         }
     };
 
@@ -59,11 +55,7 @@ export default function ManageEvents() {
             setArMange(data);
         } catch (error) {
             console.log(error);
-            if (flag === false) {
-                errorToast("Please log in or sign up to the system in order to perform this action")
-            } else {
-                errorToastGlobel();
-            }
+
         }
     };
 
@@ -83,7 +75,7 @@ export default function ManageEvents() {
 
     return (
         <>
-            <ChackUserLogin setFlag={setflag} flag={flag} />
+            <ChackUserLogin />
             <Accordion className=''>
                 <AccordionItem className={'bg-secondary text-t-white  text-center m-5 p-2 text-2xl rounded-xl hover:bg-purple-500 hover:'}
                     header={({ state }) => `${state.isEnter ? "⮝" : "⮟"} All of my events ${state.isEnter ? "⮝" : "⮟"}`}>

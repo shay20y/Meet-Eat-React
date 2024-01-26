@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { USER_ROLE_UPDATE_URL__PATCH, USER_URL__GET_POST_DELETE } from '../../../constant/constant';
 import { useApiHooks } from '../../../hooks/useApiHooks';
 
 export default function UserItem(props) {
+
+    useEffect(()=>{
+
+    },[])
 
     const { useApiMethodAxios } = useApiHooks();
 
