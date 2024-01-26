@@ -19,8 +19,14 @@ export default function Header() {
 
 
   useEffect(() => {
-    console.log(role);
-  }, [userInfo]);
+    // if(userInfo[0]==null){
+    //   onLogOut();
+    //   console.log(userInfo);
+    // }
+    // else{
+    //   console.log(role);
+    // }
+  }, []);
 
   const onLogOut = () => {
     localStorage.removeItem(TOKEN_KEY);

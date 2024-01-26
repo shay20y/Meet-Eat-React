@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { EVENT_URL__GET_POST, EVENT_URL__GET_POST_logged } from '../../constant/constant';
+import { EVENT_WHITE_USER_INFO_URL__GET } from '../../constant/constant';
 import { useApiHooks } from '../../hooks/useApiHooks';
 import { errorToastGlobel } from '../../utils/toastMes';
 import { UserContext } from '../../context/userContext';
@@ -22,11 +22,8 @@ export default function EventList() {
   const doApi = async () => {
     try {
       try {
-        const url = localStorage["user_id"]
-          ? EVENT_URL__GET_POST_logged + "/" + localStorage["user_id"] + '?date=1'
-          : EVENT_URL__GET_POST + '?date=1';
+        const url = EVENT_WHITE_USER_INFO_URL__GET;
         const data = await useApiGetAxios(url);
-        console.log(data);
         if (data.fatal === true) {
           return;
         }
@@ -45,7 +42,7 @@ export default function EventList() {
       {ar.map((item, i) => {
         return (
           <div
-            key={item.event_id}
+            key={i}
             className="p-3 bg-t-white border rounded-lg text-t-black shadow flex flex-col justify-between"
           >
             <div>
